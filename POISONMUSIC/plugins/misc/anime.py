@@ -10,7 +10,7 @@ async def get_poison _info(poison _name):
     url = 'https://graphql.anilist.co'
     query = '''
     query ($poison : String) {
-      Media (search: $poison , type: poison ) {
+      Media (search: $poison , type: POISON ) {
         id
         title {
           romaji
