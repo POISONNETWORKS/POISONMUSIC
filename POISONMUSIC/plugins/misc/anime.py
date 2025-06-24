@@ -47,11 +47,11 @@ def clean_description(desc):
     return desc.strip()[:800] + "..." if len(desc) > 800 else desc
 
 
-@app.on_message(filters.command("poison "))
+@app.on_message(filters.command("poison"))
 async def poison_info(client: Client, message: Message):
     if len(message.command) < 2:
         return await message.reply_text(
-            "❌ Please provide an poison name.\n\nExample: `/poison  poison`",
+            "❌ Please provide an poison name.\n\nExample: `/poison Naruto`",
             parse_mode=ParseMode.MARKDOWN
         )
 
@@ -60,7 +60,7 @@ async def poison_info(client: Client, message: Message):
 
     if not result:
         return await message.reply_text(
-            error or "❌ poison not found.",
+            error or "❌ Poison not found.",
         )
 
     title = result['title']['romaji']
