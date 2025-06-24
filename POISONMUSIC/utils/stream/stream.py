@@ -6,7 +6,7 @@ from pyrogram.types import InlineKeyboardMarkup
 
 import config
 from POISONMUSIC import Carbon, YouTube, app
-from POISONMUSIC.core.call import POISON
+from POISONMUSIC.core.call import JARVIS
 from POISONMUSIC.misc import db
 from POISONMUSIC.utils.database import add_active_video_chat, is_active_chat
 from POISONMUSIC.utils.exceptions import AssistantErr
