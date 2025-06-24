@@ -1,7 +1,7 @@
 from pyrogram import filters
 from pyrogram.types import Message
 
-from poison MUSIC import app
+from POISONMUSIC import app
 from config import OWNER_ID
 
 
