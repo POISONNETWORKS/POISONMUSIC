@@ -6,7 +6,7 @@ from pyrogram.enums import ChatMembersFilter
 from pyrogram.types import CallbackQuery, Message
 
 from POISONMUSIC import app
-from POISONMUSIC.core.call import JARVIS
+from POISONMUSIC.core.call import POISON
 from POISONMUSIC.misc import db
 from POISONMUSIC.utils.database import get_assistant, get_authuser_names, get_cmode
 from POISONMUSIC.utils.decorators import ActualAdminCB, AdminActual, language
