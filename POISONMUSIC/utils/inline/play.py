@@ -65,8 +65,8 @@ def stream_markup_timer(_, chat_id, played, dur):
     bar = generate_progress_bar(played_sec, duration_sec)
 
     return (
-        [[InlineKeyboardButton(text=f"{played} {bar} {dur}", callback_data="GetTimer")]] +
         control_buttons(_, chat_id) +
+        [[InlineKeyboardButton(text=f"{played} {bar} {dur}", callback_data="GetTimer")]] +        
         [[InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")]]
     )
 
