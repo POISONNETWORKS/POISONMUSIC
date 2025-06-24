@@ -6,11 +6,11 @@ import httpx
 import re
 
 
-async def get_poison _info(poison _name):
+async def get_poison_info(poison_name):
     url = 'https://graphql.anilist.co'
     query = '''
-    query ($poison : String) {
-      Media (search: $poison , type: POISON ) {
+    query ($poison: String) {
+      Media (search: $poison, type: POISON) {
         id
         title {
           romaji
@@ -27,7 +27,7 @@ async def get_poison _info(poison _name):
       }
     }
     '''
-    variables = {"poison ": poison_name}
+    variables = {"poison": poison_name}
     async with httpx.AsyncClient(timeout=10.0) as client:
         response = await client.post(url, json={'query': query, 'variables': variables})
 
@@ -51,16 +51,16 @@ def clean_description(desc):
 async def poison _info(client: Client, message: Message):
     if len(message.command) < 2:
         return await message.reply_text(
-            "❌ Please provide an poison  name.\n\nExample: `/poison  poison`",
+            "❌ Please provide an poison name.\n\nExample: `/poison  poison`",
             parse_mode=ParseMode.MARKDOWN
         )
 
-    poison _name = " ".join(message.command[1:])
-    result, error = await get_poison _info(poison _name)
+    poison_name = " ".join(message.command[1:])
+    result, error = await get_poison_info(poison_name)
 
     if not result:
         return await message.reply_text(
-            error or "❌ poison  not found.",
+            error or "❌ poison not found.",
         )
 
     title = result['title']['romaji']
