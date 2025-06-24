@@ -25,14 +25,6 @@ def track_markup(_, videoid, user_id, channel, fplay):
         ],
     ]
 
-def control_buttons(_, chat_id):
-    return [[
-        InlineKeyboardButton(text="▷", callback_data=f"ADMIN Resume|{chat_id}"),
-        InlineKeyboardButton(text="II", callback_data=f"ADMIN Pause|{chat_id}"),
-        InlineKeyboardButton(text="↻", callback_data=f"ADMIN Replay|{chat_id}"),
-        InlineKeyboardButton(text="‣‣I", callback_data=f"ADMIN Skip|{chat_id}"),
-        InlineKeyboardButton(text="▢", callback_data=f"ADMIN Stop|{chat_id}"),
-    ]]
 
 def should_update_progress(chat_id):
     now = time.time()
@@ -53,6 +45,15 @@ def generate_progress_bar(played_sec, duration_sec):
     filled = int(round(bar_length * percentage / 70))
     return "▰" * filled + "▱" * (bar_length - filled)
 
+
+def control_buttons(_, chat_id):
+    return [[
+        InlineKeyboardButton(text="▷", callback_data=f"ADMIN Resume|{chat_id}"),
+        InlineKeyboardButton(text="II", callback_data=f"ADMIN Pause|{chat_id}"),
+        InlineKeyboardButton(text="↻", callback_data=f"ADMIN Replay|{chat_id}"),
+        InlineKeyboardButton(text="‣‣I", callback_data=f"ADMIN Skip|{chat_id}"),
+        InlineKeyboardButton(text="▢", callback_data=f"ADMIN Stop|{chat_id}"),
+    ]]
 
 
 def stream_markup_timer(_, chat_id, played, dur):
