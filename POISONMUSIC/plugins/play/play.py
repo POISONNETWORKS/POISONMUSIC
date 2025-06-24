@@ -303,7 +303,7 @@ async def play_command(client, message: Message, _, chat_id, video, channel, pla
 
         else:
             try:
-                await JARVIS.stream_call(url)
+                await POISON.stream_call(url)
             except NoActiveGroupCall:
                 await mystic.edit_text(_["black_9"])
                 return await app.send_message(
