@@ -3,7 +3,7 @@ from pyrogram.types import Message
 
 from config import BANNED_USERS
 from POISONMUSIC import app
-from POISONMUSIC.core.call import JARVIS
+from POISONMUSIC.core.call import POISON
 from POISONMUSIC.utils.database import group_assistant
 from POISONMUSIC.utils.admin_filters import admin_filter
 
