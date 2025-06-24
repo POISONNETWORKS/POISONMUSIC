@@ -52,7 +52,7 @@ async def init():
     LOGGER("POISONMUSIC.plugins").info("ᴀɴɴɪᴇ's ᴍᴏᴅᴜʟᴇs ʟᴏᴀᴅᴇᴅ...")
 
     await userbot.start()
-    await POISON.start()
+    await JARVIS.start()
 
     try:
         await POISON.stream_call("https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4")
