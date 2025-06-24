@@ -103,7 +103,7 @@ async def chatgpt_handler(client: Client, message: Message):
 
 
 @app.on_message(filters.command(["ssis"], prefixes=["a", "A"]))
-async def poison _tts_handler(client: Client, message: Message):
+async def poison_tts_handler(client: Client, message: Message):
     try:
         await asyncio.wait_for(process_query(client, message, tts=True), timeout=60)
     except asyncio.TimeoutError:
