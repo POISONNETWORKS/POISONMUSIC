@@ -25,7 +25,7 @@ from POISONMUSIC.utils.decorators.language import LanguageStart
 from POISONMUSIC.utils.formatters import get_readable_time
 from POISONMUSIC.utils.inline.start import private_panel, start_panel
 from POISONMUSIC.utils.inline.help import first_page
-from config import BANNED_USERS, AYUV, HELP_IMG_URL, START_VIDS, STICKERS
+from config import BANNED_USERS
 from strings import get_string
 
 async def delete_sticker_after_delay(message, delay):
