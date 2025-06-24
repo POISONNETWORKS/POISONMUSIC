@@ -25,7 +25,6 @@ def track_markup(_, videoid, user_id, channel, fplay):
         ],
     ]
 
-
 def control_buttons(_, chat_id):
     return [[
         InlineKeyboardButton(text="▷", callback_data=f"ADMIN Resume|{chat_id}"),
@@ -33,7 +32,7 @@ def control_buttons(_, chat_id):
         InlineKeyboardButton(text="↻", callback_data=f"ADMIN Replay|{chat_id}"),
         InlineKeyboardButton(text="‣‣I", callback_data=f"ADMIN Skip|{chat_id}"),
         InlineKeyboardButton(text="▢", callback_data=f"ADMIN Stop|{chat_id}"),
-
+    ]]
 
 def should_update_progress(chat_id):
     now = time.time()
@@ -54,9 +53,6 @@ def generate_progress_bar(played_sec, duration_sec):
     filled = int(round(bar_length * percentage / 70))
     return "▰" * filled + "▱" * (bar_length - filled)
 
-
-
-    ]]
 
 
 def stream_markup_timer(_, chat_id, played, dur):
@@ -83,11 +79,11 @@ def playlist_markup(_, videoid, user_id, ptype, channel, fplay):
         [
             InlineKeyboardButton(
                 text=_["P_B_1"],
-                callback_data=f"POISONPlaylists {videoid}|{user_id}|{ptype}|a|{channel}|{fplay}"
+                callback_data=f"AnniePlaylists {videoid}|{user_id}|{ptype}|a|{channel}|{fplay}"
             ),
             InlineKeyboardButton(
                 text=_["P_B_2"],
-                callback_data=f"POISONPlaylists {videoid}|{user_id}|{ptype}|v|{channel}|{fplay}"
+                callback_data=f"AnniePlaylists {videoid}|{user_id}|{ptype}|v|{channel}|{fplay}"
             ),
         ],
         [
@@ -144,4 +140,4 @@ def slider_markup(_, videoid, user_id, query, query_type, channel, fplay):
                 callback_data=f"slider F|{query_type}|{short_query}|{user_id}|{channel}|{fplay}",
             ),
         ],
-    ]
+                      ]
