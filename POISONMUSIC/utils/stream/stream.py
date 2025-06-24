@@ -6,7 +6,7 @@ from pyrogram.types import InlineKeyboardMarkup
 
 import config
 from POISONMUSIC import Carbon, YouTube, app
-from POISONMUSIC.core.call import JARVIS
+from POISONMUSIC.core.call import POISON
 from POISONMUSIC.misc import db
 from POISONMUSIC.utils.database import add_active_video_chat, is_active_chat
 from POISONMUSIC.utils.exceptions import AssistantErr
@@ -80,7 +80,7 @@ async def stream(
                     )
                 except:
                     raise AssistantErr(_["play_14"])
-                await JARVIS.join_call(
+                await POISON.join_call(
                     chat_id,
                     original_chat_id,
                     file_path,
@@ -166,7 +166,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await JARVIS.join_call(
+            await POISON.join_call(
                 chat_id,
                 original_chat_id,
                 file_path,
@@ -226,7 +226,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await JARVIS.join_call(chat_id, original_chat_id, file_path, video=None)
+            await POISON.join_call(chat_id, original_chat_id, file_path, video=None)
             await put_queue(
                 chat_id,
                 original_chat_id,
@@ -278,7 +278,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await JARVIS.join_call(chat_id, original_chat_id, file_path, video=status)
+            await POISON.join_call(chat_id, original_chat_id, file_path, video=status)
             await put_queue(
                 chat_id,
                 original_chat_id,
