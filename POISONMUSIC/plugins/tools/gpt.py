@@ -86,8 +86,8 @@ async def process_query(client: Client, message: Message, tts: bool = False):
             os.remove(audio_file)
 
 
-@app.on_message(filters.command(["arvis"], prefixes=["j", "J"]))
-async def jarvis_handler(client: Client, message: Message):
+@app.on_message(filters.command(["oison"], prefixes=["p", "P"]))
+async def poison_handler(client: Client, message: Message):
     try:
         await asyncio.wait_for(process_query(client, message), timeout=60)
     except asyncio.TimeoutError:
