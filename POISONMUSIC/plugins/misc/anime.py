@@ -48,7 +48,7 @@ def clean_description(desc):
 
 
 @app.on_message(filters.command("poison "))
-async def poison _info(client: Client, message: Message):
+async def poison_info(client: Client, message: Message):
     if len(message.command) < 2:
         return await message.reply_text(
             "❌ Please provide an poison name.\n\nExample: `/poison  poison`",
