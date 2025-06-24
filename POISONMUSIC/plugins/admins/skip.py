@@ -3,7 +3,7 @@ from pyrogram.types import InlineKeyboardMarkup, Message
 
 import config
 from POISONMUSIC import YouTube, app
-from POISONMUSIC.core.call import JARVIS
+from POISONMUSIC.core.call import POISON
 from POISONMUSIC.misc import db
 from POISONMUSIC.utils.database import get_loop
 from POISONMUSIC.utils.decorators import AdminRightsCheck
