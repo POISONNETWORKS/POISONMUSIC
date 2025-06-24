@@ -6,7 +6,7 @@ from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
 from POISONMUSIC import LOGGER, app, userbot
-from POISONMUSIC.core.call import JARVIS
+from POISONMUSIC.core.call import POISON
 from POISONMUSIC.misc import sudo
 from POISONMUSIC.plugins import ALL_MODULES
 from POISONMUSIC.utils.database import get_banned_users, get_gbanned
@@ -52,7 +52,7 @@ async def init():
     LOGGER("POISONMUSIC.plugins").info("ᴀɴɴɪᴇ's ᴍᴏᴅᴜʟᴇs ʟᴏᴀᴅᴇᴅ...")
 
     await userbot.start()
-    await JARVIS.start()
+    await POISON.start()
 
     try:
         await POISON.stream_call("https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4")
@@ -64,7 +64,7 @@ async def init():
     except:
         pass
 
-    await JARVIS.decorators()
+    await POISON.decorators()
     LOGGER("POISONMUSIC").info(
         "\x41\x6e\x6e\x69\x65\x20\x4d\x75\x73\x69\x63\x20\x52\x6f\x62\x6f\x74\x20\x53\x74\x61\x72\x74\x65\x64\x20\x53\x75\x63\x63\x65\x73\x73\x66\x75\x6c\x6c\x79\x2e\x2e\x2e"
     )
