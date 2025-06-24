@@ -17,7 +17,7 @@ from config import (
 )
 from strings import get_string
 from POISONMUSIC import YouTube, app
-from POISONMUSIC.core.call import JARVIS
+from POISONMUSIC.core.call import POISON
 from POISONMUSIC.misc import SUDOERS, db
 from POISONMUSIC.utils.database import (
     get_active_chats,
