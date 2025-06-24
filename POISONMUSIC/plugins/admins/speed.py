@@ -3,7 +3,7 @@ from pyrogram.types import Message
 
 from config import BANNED_USERS, adminlist
 from POISONMUSIC import app
-from POISONMUSIC.core.call import JARVIS
+from POISONMUSIC.core.call import POISON
 from POISONMUSIC.misc import SUDOERS, db
 from POISONMUSIC.utils import AdminRightsCheck
 from POISONMUSIC.utils.database import is_active_chat, is_nonadmin_chat
