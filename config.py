@@ -11,12 +11,12 @@ API_ID = int(getenv("API_ID"))
 API_HASH = getenv("API_HASH")
 BOT_TOKEN = getenv("BOT_TOKEN")
 
-OWNER_ID = int(getenv("OWNER_ID", 7044783841))
-OWNER_USERNAME = getenv("OWNER_USERNAME", "CertifiedCoder")
-BOT_USERNAME = getenv("BOT_USERNAME", "AnnieTheRobot")
-BOT_NAME = getenv("BOT_NAME", "˹𝐀ɴɴɪᴇ ✘ 𝙼ᴜsɪᴄ˼ ♪")
-ASSUSERNAME = getenv("ASSUSERNAME", "musicxannie")
-EVALOP = list(map(int, getenv("EVALOP", "6797202080").split()))
+OWNER_ID = int(getenv("OWNER_ID", 7517863877))
+OWNER_USERNAME = getenv("OWNER_USERNAME", "@DARKP0IS0N")
+BOT_USERNAME = getenv("BOT_USERNAME", "poison_x_music_x_bot")
+BOT_NAME = getenv("BOT_NAME", "˹ ᴘσɪsση ꭙ ϻυsɪᴄ ˼")
+ASSUSERNAME = getenv("ASSUSERNAME", "poison")
+EVALOP = list(map(int, getenv("EVALOP", "7517863877").split()))
 
 # ───── Mongo & Logging ───── #
 MONGO_DB_URI = getenv("MONGO_DB_URI")
@@ -45,8 +45,8 @@ UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "Master")
 GIT_TOKEN = getenv("GIT_TOKEN")
 
 # ───── Support & Community ───── #
-SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/CertifiedNetwork")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/CertifiedDiscussion")
+SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/PoisonMusicUpdates")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/PoisonMusicSupport")
 
 # ───── Assistant Auto Leave ───── #
 AUTO_LEAVING_ASSISTANT = False
@@ -73,24 +73,22 @@ PLAYLIST_FETCH_LIMIT = int(getenv("PLAYLIST_FETCH_LIMIT", "2500"))
 # ───── Bot Media Assets ───── #
 
 START_VIDS = [
-    "https://telegra.ph/file/9b7e1b820c72a14d90be7.mp4",
-    "https://telegra.ph/file/72f349b1386d6d9374a38.mp4",
-    "https://telegra.ph/file/a4d90b0cb759b67d68644.mp4"
+    "https://files.catbox.moe/2q0dul.mp4"    
 ]
 
 STICKERS = [
     "CAACAgUAAx0Cd6nKUAACASBl_rnalOle6g7qS-ry-aZ1ZpVEnwACgg8AAizLEFfI5wfykoCR4h4E",
     "CAACAgUAAx0Cd6nKUAACATJl_rsEJOsaaPSYGhU7bo7iEwL8AAPMDgACu2PYV8Vb8aT4_HUPHgQ"
 ]
-HELP_IMG_URL = "https://files.catbox.moe/yg2vky.jpg"
-PING_VID_URL = "https://files.catbox.moe/3ivvgo.mp4"
-PLAYLIST_IMG_URL = "https://telegra.ph/file/94e9eca3b0ec6e2dc6cd5.png"
+HELP_IMG_URL = "https://files.catbox.moe/7j7n0o.jpg"
+PING_VID_URL = "https://files.catbox.moe/2q0dul.mp4"
+PLAYLIST_IMG_URL = "https://files.catbox.moe/gkkinp.jpg"
 STATS_VID_URL = "https://telegra.ph/file/e2ab6106ace2e95862372.mp4"
-TELEGRAM_AUDIO_URL = "https://files.catbox.moe/mlztag.jpg"
-TELEGRAM_VIDEO_URL = "https://files.catbox.moe/tiss2b.jpg"
-STREAM_IMG_URL = "https://files.catbox.moe/1d3da7.jpg"
-SOUNCLOUD_IMG_URL = "https://files.catbox.moe/zhymxl.jpg"
-YOUTUBE_IMG_URL = "https://files.catbox.moe/veykzq.jpg"
+TELEGRAM_AUDIO_URL = "https://files.catbox.moe/1acqoa.jpg"
+TELEGRAM_VIDEO_URL = "https://files.catbox.moe/pz77qq.jpg"
+STREAM_IMG_URL = "https://files.catbox.moe/jztzqe.jpg"
+SOUNCLOUD_IMG_URL = "https://files.catbox.moe/zug4cs.jpg"
+YOUTUBE_IMG_URL = "https://files.catbox.moe/mlgn8r.jpg"
 SPOTIFY_ARTIST_IMG_URL = SPOTIFY_ALBUM_IMG_URL = SPOTIFY_PLAYLIST_IMG_URL = YOUTUBE_IMG_URL
 
 # ───── Utility & Functional ───── #
