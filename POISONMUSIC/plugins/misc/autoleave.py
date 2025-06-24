@@ -5,7 +5,7 @@ from pyrogram.enums import ChatType
 
 import config
 from POISONMUSIC import app
-from POISONMUSIC.core.call import JARVIS, autoend
+from POISONMUSIC.core.call import POISON, autoend
 from POISONMUSIC.utils.database import get_client, is_active_chat, is_autoend
 
 
