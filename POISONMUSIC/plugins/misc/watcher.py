@@ -2,7 +2,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from POISONMUSIC import app
-from POISONMUSIC.core.call import POISON
+from POISONMUSIC.core.call import JARVIS
 
 welcome = 20
 close = 30
