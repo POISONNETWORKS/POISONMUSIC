@@ -2,7 +2,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from POISONMUSIC import app
-from POISONMUSIC.core.call import POISON
+from POISONMUSIC.core.call import JARVIS
 from POISONMUSIC.utils.database import is_music_playing, music_on
 from POISONMUSIC.utils.decorators import AdminRightsCheck
 from POISONMUSIC.utils.inline import close_markup
