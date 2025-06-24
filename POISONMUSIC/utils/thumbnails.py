@@ -1,145 +1,133 @@
 import os
 import re
-import random
-import aiohttp
 import aiofiles
-import traceback
-
-from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont, ImageOps
+import aiohttp
+from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 from youtubesearchpython.__future__ import VideosSearch
+from config import YOUTUBE_IMG_URL
 
+# Constants
+CACHE_DIR = "cache"
+os.makedirs(CACHE_DIR, exist_ok=True)
 
-def changeImageSize(maxWidth, maxHeight, image):
-    ratio = min(maxWidth / image.size[0], maxHeight / image.size[1])
-    newSize = (int(image.size[0] * ratio), int(image.size[1] * ratio))
-    return image.resize(newSize, Image.ANTIALIAS)
+PANEL_W, PANEL_H = 763, 545
+PANEL_X = (1280 - PANEL_W) // 2
+PANEL_Y = 88
+TRANSPARENCY = 170
+INNER_OFFSET = 36
 
+THUMB_W, THUMB_H = 542, 273
+THUMB_X = PANEL_X + (PANEL_W - THUMB_W) // 2
+THUMB_Y = PANEL_Y + INNER_OFFSET
 
-def truncate(text, max_chars=50):
-    words = text.split()
-    text1, text2 = "", ""
-    for word in words:
-        if len(text1 + " " + word) <= max_chars and not text2:
-            text1 += " " + word
-        else:
-            text2 += " " + word
-    return [text1.strip(), text2.strip()]
+TITLE_X = 377
+META_X = 377
+TITLE_Y = THUMB_Y + THUMB_H + 10
+META_Y = TITLE_Y + 45
 
+BAR_X, BAR_Y = 388, META_Y + 45
+BAR_RED_LEN = 280
+BAR_TOTAL_LEN = 480
 
-def add_rounded_corners(im, radius):
-    circle = Image.new('L', (radius * 2, radius * 2), 0)
-    draw = ImageDraw.Draw(circle)
-    draw.ellipse((0, 0, radius * 2, radius * 2), fill=255)
-    alpha = Image.new('L', im.size, 255)
-    w, h = im.size
-    alpha.paste(circle.crop((0, 0, radius, radius)), (0, 0))
-    alpha.paste(circle.crop((0, radius, radius, radius * 2)), (0, h - radius))
-    alpha.paste(circle.crop((radius, 0, radius * 2, radius)), (w - radius, 0))
-    alpha.paste(circle.crop((radius, radius, radius * 2, radius * 2)), (w - radius, h - radius))
-    im.putalpha(alpha)
-    return im
+ICONS_W, ICONS_H = 415, 45
+ICONS_X = PANEL_X + (PANEL_W - ICONS_W) // 2
+ICONS_Y = BAR_Y + 48
 
+MAX_TITLE_WIDTH = 580
 
-def fit_text(draw, text, max_width, font_path, start_size, min_size):
-    size = start_size
-    while size >= min_size:
-        font = ImageFont.truetype(font_path, size)
-        if draw.textlength(text, font=font) <= max_width:
-            return font
-        size -= 1
-    return ImageFont.truetype(font_path, min_size)
+def trim_to_width(text: str, font: ImageFont.FreeTypeFont, max_w: int) -> str:
+    ellipsis = "…"
+    if font.getlength(text) <= max_w:
+        return text
+    for i in range(len(text) - 1, 0, -1):
+        if font.getlength(text[:i] + ellipsis) <= max_w:
+            return text[:i] + ellipsis
+    return ellipsis
 
+async def get_thumb(videoid: str) -> str:
+    cache_path = os.path.join(CACHE_DIR, f"{videoid}_v4.png")
+    if os.path.exists(cache_path):
+        return cache_path
 
-async def get_thumb(videoid: str):
-    url = f"https://www.youtube.com/watch?v={videoid}"
+    # YouTube video data fetch
+    results = VideosSearch(f"https://www.youtube.com/watch?v={videoid}", limit=1)
     try:
-        results = VideosSearch(url, limit=1)
-        for result in (await results.next())["result"]:
-            title = re.sub(r"\W+", " ", result.get("title", "Unsupported Title")).title()
-            duration = result.get("duration", "Unknown Mins")
-            thumbnail = result["thumbnails"][0]["url"].split("?")[0]
-            views = result.get("viewCount", {}).get("short", "Unknown Views")
-            channel = result.get("channel", {}).get("name", "Unknown Channel")
+        results_data = await results.next()
+        result_items = results_data.get("result", [])
+        if not result_items:
+            raise ValueError("No results found.")
+        data = result_items[0]
+        title = re.sub(r"\W+", " ", data.get("title", "Unsupported Title")).title()
+        thumbnail = data.get("thumbnails", [{}])[0].get("url", YOUTUBE_IMG_URL)
+        duration = data.get("duration")
+        views = data.get("viewCount", {}).get("short", "Unknown Views")
+    except Exception:
+        title, thumbnail, duration, views = "Unsupported Title", YOUTUBE_IMG_URL, None, "Unknown Views"
 
+    is_live = not duration or str(duration).strip().lower() in {"", "live", "live now"}
+    duration_text = "Live" if is_live else duration or "Unknown Mins"
+
+    # Download thumbnail
+    thumb_path = os.path.join(CACHE_DIR, f"thumb{videoid}.png")
+    try:
         async with aiohttp.ClientSession() as session:
             async with session.get(thumbnail) as resp:
                 if resp.status == 200:
-                    f = await aiofiles.open(f"cache/thumb{videoid}.png", mode="wb")
-                    await f.write(await resp.read())
-                    await f.close()
+                    async with aiofiles.open(thumb_path, "wb") as f:
+                        await f.write(await resp.read())
+    except Exception:
+        return YOUTUBE_IMG_URL
 
-        icons = Image.open("POISONMUSIC/assets/icons.png")
-        youtube = Image.open(f"cache/thumb{videoid}.png")
-        image1 = changeImageSize(1280, 720, youtube)
-        image2 = image1.convert("RGBA")
+    # Create base image
+    base = Image.open(thumb_path).resize((1280, 720)).convert("RGBA")
+    bg = ImageEnhance.Brightness(base.filter(ImageFilter.BoxBlur(10))).enhance(0.6)
 
-        gradient = Image.new("RGBA", image2.size, (0, 0, 0, 255))
-        enhancer = ImageEnhance.Brightness(image2.filter(ImageFilter.GaussianBlur(15)))
-        blurred = enhancer.enhance(0.5)
-        background = Image.alpha_composite(gradient, blurred)
+    # Frosted glass panel
+    panel_area = bg.crop((PANEL_X, PANEL_Y, PANEL_X + PANEL_W, PANEL_Y + PANEL_H))
+    overlay = Image.new("RGBA", (PANEL_W, PANEL_H), (255, 255, 255, TRANSPARENCY))
+    frosted = Image.alpha_composite(panel_area, overlay)
+    mask = Image.new("L", (PANEL_W, PANEL_H), 0)
+    ImageDraw.Draw(mask).rounded_rectangle((0, 0, PANEL_W, PANEL_H), 50, fill=255)
+    bg.paste(frosted, (PANEL_X, PANEL_Y), mask)
 
-        Xcenter = image2.width / 2
-        Ycenter = image2.height / 2
-        logo = youtube.crop((Xcenter - 200, Ycenter - 200, Xcenter + 200, Ycenter + 200))
-        logo.thumbnail((340, 340), Image.ANTIALIAS)
+    # Draw details
+    draw = ImageDraw.Draw(bg)
+    try:
+        title_font = ImageFont.truetype("POISONMUSIC/assets/thumb/font2.ttf", 32)
+        regular_font = ImageFont.truetype("POISONMUSIC/assets/thumb/font.ttf", 18)
+    except OSError:
+        title_font = regular_font = ImageFont.load_default()
 
-        shadow = Image.new("RGBA", logo.size, (0, 0, 0, 0))
-        shadow_draw = ImageDraw.Draw(shadow)
-        shadow_draw.ellipse((0, 0, logo.size[0], logo.size[1]), fill=(0, 0, 0, 100))
-        background.paste(shadow, (110, 160), shadow)
+    thumb = base.resize((THUMB_W, THUMB_H))
+    tmask = Image.new("L", thumb.size, 0)
+    ImageDraw.Draw(tmask).rounded_rectangle((0, 0, THUMB_W, THUMB_H), 20, fill=255)
+    bg.paste(thumb, (THUMB_X, THUMB_Y), tmask)
 
-        rand = (random.randint(100, 255), random.randint(100, 255), random.randint(100, 255))
-        logo = ImageOps.expand(logo, border=15, fill=rand)
-        background.paste(logo, (100, 150))
+    draw.text((TITLE_X, TITLE_Y), trim_to_width(title, title_font, MAX_TITLE_WIDTH), fill="black", font=title_font)
+    draw.text((META_X, META_Y), f"YouTube | {views}", fill="black", font=regular_font)
 
-        draw = ImageDraw.Draw(background)
-        font_info = ImageFont.truetype("POISONMUSIC/assets/font2.ttf", 28)
-        font_time = ImageFont.truetype("POISONMUSIC/assets/font2.ttf", 26)
-        font_path = "POISONMUSIC/assets/font3.ttf"
+    # Progress bar
+    draw.line([(BAR_X, BAR_Y), (BAR_X + BAR_RED_LEN, BAR_Y)], fill="red", width=6)
+    draw.line([(BAR_X + BAR_RED_LEN, BAR_Y), (BAR_X + BAR_TOTAL_LEN, BAR_Y)], fill="gray", width=5)
+    draw.ellipse([(BAR_X + BAR_RED_LEN - 7, BAR_Y - 7), (BAR_X + BAR_RED_LEN + 7, BAR_Y + 7)], fill="red")
 
-        title_max_width = 540
-        title_lines = truncate(title, 35)
+    draw.text((BAR_X, BAR_Y + 15), "00:00", fill="black", font=regular_font)
+    end_text = "Live" if is_live else duration_text
+    draw.text((BAR_X + BAR_TOTAL_LEN - (90 if is_live else 60), BAR_Y + 15), end_text, fill="red" if is_live else "black", font=regular_font)
 
-        title_font1 = fit_text(draw, title_lines[0], title_max_width, font_path, 42, 28)
-        draw.text((565, 180), title_lines[0], (255, 255, 255), font=title_font1)
+    # Icons
+    icons_path = "POISONMUSIC/assets/thumb/play_icons.png"
+    if os.path.isfile(icons_path):
+        ic = Image.open(icons_path).resize((ICONS_W, ICONS_H)).convert("RGBA")
+        r, g, b, a = ic.split()
+        black_ic = Image.merge("RGBA", (r.point(lambda *_: 0), g.point(lambda *_: 0), b.point(lambda *_: 0), a))
+        bg.paste(black_ic, (ICONS_X, ICONS_Y), black_ic)
 
-        if title_lines[1]:
-            title_font2 = fit_text(draw, title_lines[1], title_max_width, font_path, 36, 24)
-            draw.text((565, 225), title_lines[1], (220, 220, 220), font=title_font2)
+    # Cleanup and save
+    try:
+        os.remove(thumb_path)
+    except OSError:
+        pass
 
-        draw.text((565, 305), f"{channel} | {views}", (240, 240, 240), font=font_info)
-
-        draw.line([(565, 370), (1130, 370)], fill="white", width=6)
-        draw.line([(565, 370), (990, 370)], fill=rand, width=6)
-        draw.ellipse([(990, 362), (1010, 382)], outline=rand, fill=rand, width=12)
-
-        draw.text((565, 385), "00:00", (255, 255, 255), font=font_time)
-        draw.text((1080, 385), duration, (255, 255, 255), font=font_time)
-
-        picons = icons.resize((580, 62))
-        background.paste(picons, (565, 430), picons)
-
-        watermark_font = ImageFont.truetype("POISONMUSIC/assets/font2.ttf", 24)
-        watermark_text = "POISONMUSIC"
-        text_size = draw.textsize(watermark_text, font=watermark_font)
-        x = background.width - text_size[0] - 25
-        y = background.height - text_size[1] - 25
-        glow_pos = [(x + dx, y + dy) for dx in (-1, 1) for dy in (-1, 1)]
-        for pos in glow_pos:
-            draw.text(pos, watermark_text, font=watermark_font, fill=(0, 0, 0, 180))
-        draw.text((x, y), watermark_text, font=watermark_font, fill=(255, 255, 255, 240))
-
-        background = add_rounded_corners(background, 30)
-
-        try:
-            os.remove(f"cache/thumb{videoid}.png")
-        except:
-            pass
-
-        tpath = f"cache/{videoid}.png"
-        background.save(tpath)
-        return tpath
-
-    except:
-        traceback.print_exc()
-        return None
+    bg.save(cache_path)
+    return cache_path
