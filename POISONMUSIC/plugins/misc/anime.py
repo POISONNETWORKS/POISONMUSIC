@@ -27,7 +27,7 @@ async def get_poison _info(poison _name):
       }
     }
     '''
-    variables = {"poison ": poison _name}
+    variables = {"poison ": poison_name}
     async with httpx.AsyncClient(timeout=10.0) as client:
         response = await client.post(url, json={'query': query, 'variables': variables})
 
