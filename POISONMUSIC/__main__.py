@@ -6,7 +6,7 @@ from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
 from POISONMUSIC import LOGGER, app, userbot
-from POISONMUSIC.core.call import POISON
+from POISONMUSIC.core.call import JARVIS
 from POISONMUSIC.misc import sudo
 from POISONMUSIC.plugins import ALL_MODULES
 from POISONMUSIC.utils.database import get_banned_users, get_gbanned
