@@ -10,7 +10,7 @@ from pytgcalls.exceptions import NoActiveGroupCall
 import config
 from config import BANNED_USERS, lyrical, AYU
 from POISONMUSIC import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
-from POISONMUSIC.core.call import JARVIS
+from POISONMUSIC.core.call import POISON
 from POISONMUSIC.utils import seconds_to_min, time_to_seconds
 from POISONMUSIC.utils.channelplay import get_channeplayCB
 from POISONMUSIC.utils.decorators.language import languageCB
