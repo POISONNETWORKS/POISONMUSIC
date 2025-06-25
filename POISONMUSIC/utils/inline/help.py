@@ -7,7 +7,7 @@ TOTAL_SECTIONS = 29
 
 def generate_help_buttons(_, start: int, end: int, current_page: int):
     """Create a grid of two buttons per row for the given range."""
-    buttons, per_row = [], 3
+    buttons, per_row = [], 2
     for idx, i in enumerate(range(start, end + 1)):
         if idx % per_row == 0:
             buttons.append([])
