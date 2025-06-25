@@ -2,7 +2,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from POISONMUSIC import app
 
 
-TOTAL_SECTIONS = 29
+TOTAL_SECTIONS = 30
 
 
 def generate_help_buttons(_, start: int, end: int, current_page: int):
@@ -24,8 +24,8 @@ def first_page(_):
     buttons = generate_help_buttons(_, 1, 15, current_page=1)
     buttons.append(
         [
-            InlineKeyboardButton(text="๏ ᴍᴇɴᴜ ๏", callback_data="back_to_main"),
-            InlineKeyboardButton(text="๏ ɴᴇxᴛ ๏", callback_data="help_next_2")
+            InlineKeyboardButton(text="๏ ϻєηυ ๏", callback_data="back_to_main"),
+            InlineKeyboardButton(text="๏ ηєxᴛ ๏", callback_data="help_next_2")
         ]
     )
     return InlineKeyboardMarkup(buttons)
@@ -35,8 +35,8 @@ def second_page(_):
     buttons = generate_help_buttons(_, 16, TOTAL_SECTIONS, current_page=2)
     buttons.append(
         [
-            InlineKeyboardButton(text="๏ ʙᴀᴄᴋ ๏", callback_data="help_prev_1"),
-            InlineKeyboardButton(text="๏ ᴍᴇɴᴜ ๏", callback_data="back_to_main")
+            InlineKeyboardButton(text="๏ ʙᴧᴄᴋ ๏", callback_data="help_prev_1"),
+            InlineKeyboardButton(text="๏ ϻєηυ ๏", callback_data="back_to_main")
         ]
     )
     return InlineKeyboardMarkup(buttons)
@@ -75,7 +75,7 @@ def help_back_markup(_, current_page: int):
                 ),
                 InlineKeyboardButton(
                     text=_["CLOSE_BUTTON"],
-                    callback_data="close"
+                    callback_data="clσsє
                 ),
             ]
         ]
