@@ -32,7 +32,7 @@ def first_page(_):
 
 
 def second_page(_):
-    buttons = generate_help_buttons(_, 16, TOTAL_SECTIONS, current_page=2)
+    buttons = generate_help_buttons(_, 16, 30, TOTAL_SECTIONS, current_page=2)
     buttons.append(
         [
             InlineKeyboardButton(text="๏ ʙᴧᴄᴋ ๏", callback_data="help_prev_1"),
