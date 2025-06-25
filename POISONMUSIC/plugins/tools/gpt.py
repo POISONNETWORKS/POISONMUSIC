@@ -86,7 +86,7 @@ async def process_query(client: Client, message: Message, tts: bool = False):
             os.remove(audio_file)
 
 
-@app.on_message(filters.command(["oison","am"], prefixes=["p", "P", "r", "R"]))
+@app.on_message(filters.command(["oison","am","ahto"], prefixes=["p", "P", "r", "R", "m", "M"]))
 async def poison_ram_handler(client: Client, message: Message):
     try:
         await asyncio.wait_for(process_query(client, message), timeout=60)
