@@ -43,7 +43,7 @@ def generate_progress_bar(played_sec, duration_sec):
 
     bar_length = 8
     filled = int(round(bar_length * percentage / 70))
-    return "▰" * filled + "▱" * (bar_length - filled)
+    return "━⚪" * filled + "─" * (bar_length - filled)
 
 
 def control_buttons(_, chat_id):
