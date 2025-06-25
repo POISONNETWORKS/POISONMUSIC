@@ -75,7 +75,7 @@ def help_back_markup(_, current_page: int):
                 ),
                 InlineKeyboardButton(
                     text=_["CLOSE_BUTTON"],
-                    callback_data="clσsє
+                    callback_data="clσsє"
                 ),
             ]
         ]
