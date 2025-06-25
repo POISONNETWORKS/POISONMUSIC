@@ -1,4 +1,4 @@
-aiofiles
+iofiles
 aiohttp
 apscheduler
 asyncio
@@ -13,8 +13,8 @@ google-api-python-client
 gpytranslate
 gtts
 heroku3
-httpx[http2]==0.27.2
-kurigram~=2.2.4
+httpx[http2]==0.28.1
+kurigram==2.2.6
 lexica-api
 motor
 nekosbest
@@ -27,7 +27,6 @@ py-tgcalls==2.2.3
 pycryptodome
 pydub
 pyfiglet
-pykeyboard
 pyshorteners
 python-dotenv
 python-whois
@@ -41,5 +40,5 @@ telegraph
 tgcrypto
 unidecode
 wget
-youtube-search-python
 yt-dlp==2025.6.9
+git+https://github.com/CertifiedCoders/youtube-search-python.git@v1.6.6.post1
