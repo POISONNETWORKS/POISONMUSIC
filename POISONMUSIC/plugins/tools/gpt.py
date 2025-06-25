@@ -87,7 +87,7 @@ async def process_query(client: Client, message: Message, tts: bool = False):
 
 
 @app.on_message(filters.command(["oison","am","ahto"], prefixes=["p", "P", "r", "R", "m", "M"]))
-async def poison_ram_handler(client: Client, message: Message):
+async def poison_ram_mahto_handler(client: Client, message: Message):
     try:
         await asyncio.wait_for(process_query(client, message), timeout=60)
     except asyncio.TimeoutError:
