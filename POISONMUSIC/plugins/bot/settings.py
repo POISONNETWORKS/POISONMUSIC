@@ -78,6 +78,21 @@ async def settings_back_markup(client, callback: CallbackQuery, _):
         buttons = setting_markup(_)
         return await callback.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(buttons))
 
+
+@app.on_callback_query(filters.regex("^bot_info_data$"))
+async def show_bot_info(c: app, q: CallbackQuery):
+    start = time()
+    x = await c.send_message(q.message.chat.id, "Pinging..")
+    delta_ping = time() - start
+    await x.delete()
+    txt = f"""
+    🏓 ᴘɪɴɢ: {delta_ping * 1000:.3f} ms   
+    🐍 ᴘʏᴛʜᴏɴ ᴠᴇʀsɪᴏɴ: 3.10.4
+    🔥 ᴘʏʀᴏɢʀᴀᴍ ᴠᴇʀsɪᴏɴ: {pver}
+    """
+    await q.answer(txt, show_alert=True)
+    return
+
 # ─── CALLBACK WITHOUT ADMIN RIGHTS ──────────────────────────────────
 
 @app.on_callback_query(
