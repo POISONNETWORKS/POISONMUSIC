@@ -106,7 +106,7 @@ async def start_pm(client, message: Message, _):
         if await is_on_off(2):
             await app.send_message(
                 chat_id=config.LOGGER_ID,
-                text=f"<b>✦ ηєᴡ ᴜsєʀ sᴛᴧʀᴛєᴅ ᴛʜє ʙσᴛ.\n\n</b><b>➻ ηᴧϻє :</b> <code>{message.from_user.mention}</code>\n<b>➻ ᴜsєʀηᴧϻє :</b> @{message.from_user.username}</code>\n<b>➻ ᴜsєʀ ɪᴅ :</b> <code>{message.from_user.id}",
+                text=f"<b>✦ ηєᴡ ᴜsєʀ sᴛᴧʀᴛєᴅ ᴛʜє ʙσᴛ.</b>\n\n<b>➻ ηᴧϻє :</b> <code>{message.from_user.mention}</code>\n<b>➻ ᴜsєʀηᴧϻє :</b> @{message.from_user.username}</code>\n<b>➻ ᴜsєʀ ɪᴅ :</b> <code>{message.from_user.id}",
             )
 
 @app.on_message(filters.command(["start"]) & filters.group & ~BANNED_USERS)
