@@ -13,7 +13,6 @@ BOT_ID: Optional[int] = None
 
 PHOTOS = [
     "https://te.legra.ph/file/17d19061f86cb1ebbddec.jpg"
-    
 ]
 
 def _is_valid_url(url: Optional[str]) -> bool:
