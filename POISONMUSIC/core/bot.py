@@ -45,7 +45,7 @@ class POISON(Client):
             await self.send_message(
                 config.LOGGER_ID,
                 (
-                    f"<b>✦ ʙσᴛ sᴛᴧʀᴛєᴅ {self.mention} :</b>\n\n"                    
+                    f"<b>✦ ʙσᴛ sᴛᴧʀᴛєᴅ : {self.mention}</b>\n\n"                    
                     f"<b>➻ ηᴧϻє : {self.name}</b>\n"
                     f"<b>➻ ᴜsєʀηᴧϻє : @{self.username}</b></u>\n"
                     f"<b>➻ ᴜsєʀ ɪᴅ : <code>{self.id}</code></b>"
