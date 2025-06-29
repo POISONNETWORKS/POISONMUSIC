@@ -45,10 +45,10 @@ class POISON(Client):
             await self.send_message(
                 config.LOGGER_ID,
                 (
-                    f"<u><b>✦ ʙσᴛ sᴛᴧʀᴛєᴅ {self.mention} :</b></u>\n\n"                    
-                    f"➻ ηᴧϻє : {self.name}\n"
-                    f"➻ ᴜsєʀηᴧϻє : @{self.username}"
-                    f"➻ ᴜsєʀ ɪᴅ : <code>{self.id}</code>\n"
+                    f"<u><b>✦ ʙσᴛ sᴛᴧʀᴛєᴅ {self.mention} :\n\n"                    
+                    f"u><b>➻ ηᴧϻє : {self.name}</b></u>\n"
+                    f"u><b>➻ ᴜsєʀηᴧϻє : @{self.username}</b></u>\n"
+                    f"u><b>➻ ᴜsєʀ ɪᴅ : <code>{self.id}</code></b></u>\n"
                 ),
             )
         except (errors.ChannelInvalid, errors.PeerIdInvalid):
