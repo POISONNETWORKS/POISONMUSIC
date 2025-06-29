@@ -15,6 +15,7 @@ class POISON(Client):
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             bot_token=config.BOT_TOKEN,
+            in_memory=True,
             workers=30,
             max_concurrent_transmissions=7,
         )
@@ -44,10 +45,10 @@ class POISON(Client):
             await self.send_message(
                 config.LOGGER_ID,
                 (
-                    f"<u><b>» {self.mention} ʙᴏᴛ sᴛᴀʀᴛᴇᴅ :</b></u>\n\n"
-                    f"ɪᴅ : <code>{self.id}</code>\n"
-                    f"ɴᴀᴍᴇ : {self.name}\n"
-                    f"ᴜsᴇʀɴᴀᴍᴇ : @{self.username}"
+                    f"<u><b>✦ ʙσᴛ sᴛᴧʀᴛєᴅ {self.mention} :</b></u>\n\n"                    
+                    f"➻ ηᴧϻє : {self.name}\n"
+                    f"➻ ᴜsєʀηᴧϻє : @{self.username}"
+                    f"➻ ᴜsєʀ ɪᴅ : <code>{self.id}</code>\n"
                 ),
             )
         except (errors.ChannelInvalid, errors.PeerIdInvalid):
