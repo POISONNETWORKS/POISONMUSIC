@@ -78,7 +78,7 @@ class Userbot:
 
             try:
                 await client.send_message(
-                    config.LOGGER_ID, f"Poison's Assistant {index} Started"
+                    config.LOGGER_ID, f"<b>ᴘσɪsση's ᴧssɪsᴛᴧηᴛ {index} sᴛᴧʀᴛєᴅ</b>"
                 )
             except Exception:
                 LOGGER(__name__).error(
