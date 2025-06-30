@@ -53,7 +53,7 @@ async def sudoers_list(client, message: Message):
 
     await message.reply_video(
         video="https://files.catbox.moe/x7v3k6.mp4",
-        caption="**» ᴄʜᴇᴄᴋ sᴜᴅᴏ ʟɪsᴛ ʙʏ ɢɪᴠᴇɴ ʙᴇʟᴏᴡ ʙᴜᴛᴛᴏɴ.**\n\n**» ɴᴏᴛᴇ:**  ᴏɴʟʏ sᴜᴅᴏ ᴜsᴇʀs ᴄᴀɴ ᴠɪᴇᴡ.",
+        caption="**» ᴄʜєᴄᴋ sυᴅσ ʟɪsᴛ ʙʏ ɢɪᴠєη ʙєʟσᴡ ʙυᴛᴛση.**\n\n**» ησᴛє:**  σηʟʏ sᴜᴅσ υsєʀs ᴄᴧη ᴠɪєᴡ..",
         reply_markup=reply_markup
     )
 
@@ -62,11 +62,11 @@ async def sudoers_list(client, message: Message):
 @app.on_callback_query(filters.regex("^sudo_list_view$"))
 async def view_sudo_list_callback(client, callback_query: CallbackQuery):
     if callback_query.from_user.id not in SUDOERS:
-        return await callback_query.answer("ᴏɴʟʏ sᴜᴅᴏᴇʀs ᴀɴᴅ ᴏᴡɴᴇʀ ᴄᴀɴ ᴀᴄᴄᴇss ᴛʜɪs", show_alert=True)
+        return await callback_query.answer("σηʟʏ sυᴅσєʀs ᴧηᴅ σᴡɴєʀ ᴄᴧη ᴧᴄᴄєss ᴛʜɪs", show_alert=True)
 
     owner = await app.get_users(OWNER_ID)
-    caption = f"**˹ʟɪsᴛ ᴏғ ʙᴏᴛ ᴍᴏᴅᴇʀᴀᴛᴏʀs˼**\n\n**🌹Oᴡɴᴇʀ** ➥ {owner.mention}\n\n"
-    keyboard = [[InlineKeyboardButton("๏ ᴠɪᴇᴡ ᴏᴡɴᴇʀ ๏", url=f"tg://openmessage?user_id={OWNER_ID}")]]
+    caption = f"**˹ʟɪsᴛ σғ ʙσᴛ ᴍσᴅєʀᴧᴛσʀs˼**\n\n**🌹σᴡηєʀ** ➥ {owner.mention}\n\n"
+    keyboard = [[InlineKeyboardButton("๏ ᴠɪєᴡ σᴡηєʀ ๏", url=f"tg://openmessage?user_id={OWNER_ID}")]]
 
     count = 1
     for user_id in SUDOERS:
@@ -74,25 +74,25 @@ async def view_sudo_list_callback(client, callback_query: CallbackQuery):
             continue
         try:
             user = await app.get_users(user_id)
-            caption += f"**🎁 Sᴜᴅᴏ** {count} **»** {user.mention}\n"
+            caption += f"**🎁 sυᴅσ** {count} **»** {user.mention}\n"
             keyboard.append([
-                InlineKeyboardButton(f"๏ ᴠɪᴇᴡ sᴜᴅᴏ {count} ๏", url=f"tg://openmessage?user_id={user_id}")
+                InlineKeyboardButton(f"๏ ᴠɪєᴡ sυᴅσ {count} ๏", url=f"tg://openmessage?user_id={user_id}")
             ])
             count += 1
         except:
             continue
 
-    keyboard.append([InlineKeyboardButton("๏ ʙᴀᴄᴋ ๏", callback_data="sudo_list_back")])
+    keyboard.append([InlineKeyboardButton("๏ ʙᴧᴀᴄᴋ ๏", callback_data="sudo_list_back")])
     await callback_query.message.edit_caption(caption=caption, reply_markup=InlineKeyboardMarkup(keyboard))
 
 # ─── Callback: Back to List Menu ────────────────────────────
 
 @app.on_callback_query(filters.regex("^sudo_list_back$"))
 async def back_to_sudo_list_menu(client, callback_query: CallbackQuery):
-    keyboard = [[InlineKeyboardButton("๏ ᴠɪᴇᴡ sᴜᴅᴏʟɪsᴛ ๏", callback_data="sudo_list_view")]]
+    keyboard = [[InlineKeyboardButton("๏ ᴠɪєᴡ sυᴅσʟɪsᴛ ๏", callback_data="sudo_list_view")]]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await callback_query.message.edit_caption(
-        caption="**» ᴄʜᴇᴄᴋ sᴜᴅᴏ ʟɪsᴛ ʙʏ ɢɪᴠᴇɴ ʙᴇʟᴏᴡ ʙᴜᴛᴛᴏɴ.**\n\n**» ɴᴏᴛᴇ:**  ᴏɴʟʏ sᴜᴅᴏ ᴜsᴇʀs ᴄᴀɴ ᴠɪᴇᴡ.",
+        caption="**» ᴄʜєᴄᴋ sυᴅσ ʟɪsᴛ ʙʏ ɢɪᴠєη ʙєʟσᴡ ʙυᴛᴛση.**\n\n**» ησᴛє:**  σηʟʏ sᴜᴅσ υsєʀs ᴄᴧη ᴠɪєᴡ.",
         reply_markup=reply_markup
     )
 
