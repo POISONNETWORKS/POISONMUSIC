@@ -83,14 +83,14 @@ async def join_watcher(_, message: Message):
                 pass
 
             caption = (
-                "📝 **ᴍᴜsɪᴄ ʙᴏᴛ ᴀᴅᴅᴇᴅ ɪɴ ᴀ ɴᴇᴡ ɢʀᴏᴜᴘ**\n\n"
+                "📝 **ϻυsɪᴄ ʙσᴛ ᴧᴅᴅєᴅ ɪη ᴧ ηєᴡ ɢʀσυᴘ**\n\n"
                 "❅─────✧❅✦❅✧─────❅\n\n"
-                f"📌 **ᴄʜᴀᴛ ɴᴀᴍᴇ:** `{chat.title}`\n"
-                f"🍂 **ᴄʜᴀᴛ ɪᴅ:** `{chat.id}`\n"
-                f"🔐 **ᴄʜᴀᴛ ᴜsᴇʀɴᴀᴍᴇ:** @{chat.username if chat.username else 'Private'}\n"
-                f"🛰 **ᴄʜᴀᴛ ʟɪɴᴋ:** [ᴄʟɪᴄᴋ ʜᴇʀᴇ]({invite_link or 'https://t.me/'})\n"
-                f"📈 **ɢʀᴏᴜᴘ ᴍᴇᴍʙᴇʀs:** `{member_count}`\n"
-                f"🤔 **ᴀᴅᴅᴇᴅ ʙʏ:** {message.from_user.mention if message.from_user else 'Unknown'}"
+                f"📌 **ᴄʜᴧᴛ ηᴧϻє:** `{chat.title}`\n"
+                f"🍂 **ᴄʜᴧᴛ ɪᴅ:** `{chat.id}`\n"
+                f"🔐 **ᴄʜᴧᴛ ᴜsєʀηᴧϻє:** @{chat.username if chat.username else 'Private'}\n"
+                f"🛰 **ᴄʜᴧᴛ ʟɪηᴋ:** [ᴄʟɪᴄᴋ ʜᴇʀᴇ]({invite_link or 'https://t.me/'})\n"
+                f"📈 **ɢʀσυᴘ ϻєϻʙєʀs:** `{member_count}`\n"
+                f"🤔 **ᴧᴅᴅєᴅ ʙʏ:** {message.from_user.mention if message.from_user else 'Unknown'}"
             )
 
             reply_markup = None
@@ -122,11 +122,11 @@ async def on_left_chat_member(_, message: Message):
         chat = message.chat
 
         text = (
-            "✫ **<u>#ʟᴇғᴛ_ɢʀᴏᴜᴘ</u>** ✫\n\n"
-            f"📌 **ᴄʜᴀᴛ ɴᴀᴍᴇ:** `{chat.title}`\n"
-            f"🆔 **ᴄʜᴀᴛ ɪᴅ:** `{chat.id}`\n"
-            f"👤 **ʀᴇᴍᴏᴠᴇᴅ ʙʏ:** {remover}\n"
-            f"🤖 **ʙᴏᴛ:** @{BOT_INFO.username}"
+            "✫ **<u>#ʟєғᴛ_ɢʀσυᴘ</u>** ✫\n\n"
+            f"📌 **ᴄʜᴧᴛ ηᴧϻє:** `{chat.title}`\n"
+            f"🆔 **ᴄʜᴧᴛ ɪᴅ:** `{chat.id}`\n"
+            f"👤 **ʀєϻσᴠєᴅ ʙʏ:** {remover}\n"
+            f"🤖 **ʙσᴛ:** @{BOT_INFO.username}"
         )
 
         max_retries = 3
