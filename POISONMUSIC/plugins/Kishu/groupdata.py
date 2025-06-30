@@ -52,16 +52,16 @@ async def instatus(app, message):
     timelog = "{:.2f}".format(end_time - start_time)
 
     await sent_message.edit(f"""
-**▰▰▰ GROUP DATA REPORT ▰▰▰
-➲ NAME : {message.chat.title} ✅
-➲ TOTAL MEMBERS : {count} 🫂
+**▰▰▰ ɢʀσυᴘ ᴅᴧᴛᴧ ʀєᴘσʀᴛ ▰▰▰
+➲ ηᴧϻє : {message.chat.title} ✅
+➲ ᴛσᴛᴧʟ ϻєϻʙєʀs : {count} 🫂
 ➖➖➖➖➖➖➖
-➲ ADMINS : {stats['admins']} 👮‍♂️
-➲ BOTS : {stats['bots']} 🤖
-➲ ZOMBIES : {stats['deleted']} 🧟
-➲ BANNED : {stats['banned']} 🚫
-➲ PREMIUM USERS : {stats['premium']} 🎁
-➲ RESTRICTED USERS : {stats['restricted']} 🔒
-➲ FAKE USERS : {stats['fake']} 👻
+➲ ᴧᴅϻɪηs : {stats['admins']} 👮‍♂️
+➲ ʙσᴛs : {stats['bots']} 🤖
+➲ ᴢσϻʙɪєs : {stats['deleted']} 🧟
+➲ ʙᴧηηєᴅ : {stats['banned']} 🚫
+➲ ᴘʀєϻɪᴜϻ ᴜsєʀ : {stats['premium']} 🎁
+➲ ʀєsᴛʀɪᴄᴛєᴅ ᴜsєʀ : {stats['restricted']} 🔒
+➲ ғᴧᴋє ᴜsєʀ : {stats['fake']} 👻
 ➖➖➖➖➖➖➖
-⏱ TIME TAKEN : {timelog} sec**""")
+⏱ ᴛɪϻє ᴛᴧᴋєη : {timelog} sec**""")
