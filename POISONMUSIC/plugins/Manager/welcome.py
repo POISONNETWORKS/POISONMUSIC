@@ -180,7 +180,7 @@ async def welcome(client, update: ChatMemberUpdated):
             except: pass
 
     except Exception:
-        await client.send_message(cid, f"🎉 Welcome, {user.mention}!")
+        await client.send_message(cid, f"<b>🎉 ᴡєʟᴄσϻє, {user.mention}!</b>")
     finally:
         for f in (avatar, img):
             if f and os.path.exists(f) and "POISONMUSIC/assets" not in f:
