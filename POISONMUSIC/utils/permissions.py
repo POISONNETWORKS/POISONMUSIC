@@ -1,5 +1,4 @@
 import datetime as dt
-from functools import wraps
 from typing import Tuple, Optional
 
 from pyrogram import Client
@@ -149,41 +148,3 @@ async def user_has_permission(
         txt = f"{who} don’t have the right **{permission}** in **{chat_title}**."
         return False, txt
     return True, None
-    
-# ==== adminsOnly Function ==== #
-def adminsOnly(permission):
-    def subFunc(func):
-        @wraps(func)
-        async def subFunc2(client, message: Message, *args, **kwargs):
-            chatID = message.chat.id
-
-            # Check if the bot has the required permission
-            bot_perms = await bot_permissions(chatID)
-            if permission not in bot_perms:
-                return await unauthorised(
-                    message, permission, subFunc2, bot_lacking_permission=True
-                )
-
-            if not message.from_user:
-                # For anonymous admins
-                if message.sender_chat and message.sender_chat.id == message.chat.id:
-                    return await authorised(
-                        func,
-                        subFunc2,
-                        client,
-                        message,
-                        *args,
-                        **kwargs,
-                    )
-                return await unauthorised(message, permission, subFunc2)
-
-            # For admins and sudo users
-            userID = message.from_user.id
-            permissions = await member_permissions(chatID, userID)
-            if userID not in SUDOERS and permission not in permissions:
-                return await unauthorised(message, permission, subFunc2)
-            return await authorised(func, subFunc2, client, message, *args, **kwargs)
-
-        return subFunc2
-
-    return subFunc
