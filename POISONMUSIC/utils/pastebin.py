@@ -45,3 +45,12 @@ async def POISONBIN(text):
         return
     link = BASE + resp["message"]
     return link
+
+# ======= Don't use anything here else your bot will be fucked up ====== #
+async def ANNIEBIN(text):
+    resp = await post(f"{BASE}api/v2/paste", data=text)
+    if not resp["success"]:
+        return
+    link = BASE + resp["message"]
+    return link 
+# ======= Don't use anything here else your bot will be fucked up ====== #
