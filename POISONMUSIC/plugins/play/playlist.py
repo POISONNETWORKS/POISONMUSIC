@@ -1,7 +1,7 @@
 import os
 import requests
 from random import randint
-from ANNIEMUSIC.utils.database import (
+from POISONMUSIC.utils.database import (
     add_served_chat,
     add_served_user,
     blacklisted_chats,
@@ -14,24 +14,24 @@ from pykeyboard import InlineKeyboard
 from pyrogram import filters
 from pyrogram.types import (InlineKeyboardButton, CallbackQuery,
                             InlineKeyboardMarkup, Message)
-from ANNIEMUSIC.utils import close_markup
+from POISONMUSIC.utils import close_markup
 from config import BANNED_USERS, SERVER_PLAYLIST_LIMIT
-from ANNIEMUSIC import Carbon, app
-from ANNIEMUSIC.utils.decorators.language import language, languageCB
-from ANNIEMUSIC.utils.inline.playlist import (botplaylist_markup,
+from POISONMUSIC import Carbon, app
+from POISONMUSIC.utils.decorators.language import language, languageCB
+from POISONMUSIC.utils.inline.playlist import (botplaylist_markup,
                                               get_playlist_markup,
                                               warning_markup)
-from ANNIEMUSIC.utils.pastebin import ANNIEBIN
+from POISONMUSIC.utils.pastebin import ANNIEBIN
 import time
 import yt_dlp
 from youtube_search import YoutubeSearch
 from youtubesearchpython import VideosSearch
 from youtubesearchpython import SearchVideos
 
-from ANNIEMUSIC.utils.stream.stream import stream
+from POISONMUSIC.utils.stream.stream import stream
 from typing import Dict, List, Union
 
-from ANNIEMUSIC.core.mongo import mongodb
+from POISONMUSIC.core.mongo import mongodb
 
 
 playlistdb = mongodb.playlist
