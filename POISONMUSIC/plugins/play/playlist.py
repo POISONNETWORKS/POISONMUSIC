@@ -13,14 +13,14 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from youtube_search import YoutubeSearch
 
 from config import BANNED_USERS, SERVER_PLAYLIST_LIMIT
-from ChampuMusic import Carbon, app, EMOJIS
-from ChampuMusic.utils.decorators.language import language, languageCB
-from ChampuMusic.utils.inline.playlist import (
+from POISONMUSIC import Carbon, app, EMOJIS
+from POISONMUSIC.utils.decorators.language import language, languageCB
+from POISONMUSIC.utils.inline.playlist import (
     botplaylist_markup,
     get_playlist_markup,
     warning_markup,
 )
-from ChampuMusic.utils.stream.stream import stream
+from POISONMUSIC.utils.stream.stream import stream
 
 # Define a dictionary to track the last message timestamp for each user
 user_last_message_time = {}
