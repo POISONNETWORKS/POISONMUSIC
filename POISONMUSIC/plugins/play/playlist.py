@@ -21,7 +21,7 @@ from POISONMUSIC.utils.decorators.language import language, languageCB
 from POISONMUSIC.utils.inline.playlist import (botplaylist_markup,
                                               get_playlist_markup,
                                               warning_markup)
-from POISONMUSIC.utils.pastebin import ANNIEBIN
+from POISONMUSIC.utils.pastebin import POISONBIN
 import time
 import yt_dlp
 from youtube_search import YoutubeSearch
@@ -115,7 +115,7 @@ async def check_playlist(client, message: Message, _):
         count += 1
         msg += f"\n\n{count}- {title[:70]}\n"
         msg += _["playlist_5"].format(duration)
-    link = await ANNIEBIN(msg)
+    link = await POISONBIN(msg)
     lines = msg.count("\n")
     if lines >= 17:
         car = os.linesep.join(msg.split(os.linesep)[:17])
@@ -437,7 +437,7 @@ async def add_playlist(client, message: Message, _):
             return await message.reply_text(str(e))
             pass
     else:
-        from ANNIEMUSIC import YouTube
+        from POISONMUSIC import YouTube
         # Add a specific song by name
         query = " ".join(message.command[1:])
         print(query)
@@ -551,7 +551,7 @@ async def del_plist(client, CallbackQuery, _):
 @app.on_callback_query(filters.regex("recover_playlist") & ~BANNED_USERS)
 @languageCB
 async def add_playlist(client, CallbackQuery, _):
-    from ANNIEMUSIC import YouTube
+    from POISONMUSIC import YouTube
     callback_data = CallbackQuery.data.strip()
     videoid = callback_data.split(None, 1)[1]
     user_id = CallbackQuery.from_user.id
@@ -617,7 +617,7 @@ async def add_playlist(client, CallbackQuery, _):
     _check = await get_playlist(user_id, videoid)
     if _check:
         try:
-            from ANNIEMUSIC import YouTube
+            from POISONMUSIC import YouTube
             return await CallbackQuery.answer(
                 _["playlist_8"], show_alert=True
             )
@@ -661,7 +661,7 @@ DELETE_ALL_PLAYLIST_COMMAND = ("delallplaylist")
 @app.on_message(filters.command(DELETE_ALL_PLAYLIST_COMMAND) & ~BANNED_USERS)
 @language
 async def delete_all_playlists(client, message, _):
-    from ANNIEMUSIC import YouTube
+    from POISONMUSIC import YouTube
     user_id = message.from_user.id
     _playlist = await get_playlist_names(user_id)
     if _playlist:
@@ -677,7 +677,7 @@ async def delete_all_playlists(client, message, _):
 @app.on_callback_query(filters.regex("del_playlist") & ~BANNED_USERS)
 @languageCB
 async def del_plist(client, CallbackQuery, _):
-    from ANNIEMUSIC import YouTube
+    from POISONMUSIC import YouTube
     callback_data = CallbackQuery.data.strip()
     videoid = callback_data.split(None, 1)[1]
     user_id = CallbackQuery.from_user.id
@@ -710,7 +710,7 @@ async def del_plist(client, CallbackQuery, _):
 )
 @languageCB
 async def del_whole_playlist(client, CallbackQuery, _):
-    from ANNIEMUSIC import YouTube
+    from POISONMUSIC import YouTube
     _playlist = await get_playlist_names(CallbackQuery.from_user.id)
     for x in _playlist:
         await CallbackQuery.answer("➻ ᴏᴋ sɪʀ ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ.\n\n➥ ᴅᴇʟᴇᴛɪɴɢ ʏᴏᴜʀ ᴘʟᴀʏʟɪsᴛ...", show_alert=True)
@@ -738,7 +738,7 @@ async def get_playlist_playmode_(client, CallbackQuery, _):
 )
 @languageCB
 async def delete_warning_message(client, CallbackQuery, _):
-    from ANNIEMUSIC import YouTube
+    from POISONMUSIC import YouTube
     try:
         await CallbackQuery.answer()
     except:
@@ -752,7 +752,7 @@ async def delete_warning_message(client, CallbackQuery, _):
 @app.on_callback_query(filters.regex("home_play") & ~BANNED_USERS)
 @languageCB
 async def home_play_(client, CallbackQuery, _):
-    from ANNIEMUSIC import YouTube
+    from POISONMUSIC import YouTube
     try:
         await CallbackQuery.answer()
     except:
@@ -768,7 +768,7 @@ async def home_play_(client, CallbackQuery, _):
 )
 @languageCB
 async def del_back_playlist(client, CallbackQuery, _):
-    from ANNIEMUSIC import YouTube
+    from POISONMUSIC import YouTube
     user_id = CallbackQuery.from_user.id
     _playlist = await get_playlist_names(user_id)
     if _playlist:
