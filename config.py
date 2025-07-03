@@ -117,3 +117,6 @@ if SUPPORT_CHANNEL and not re.match(r"^https?://", SUPPORT_CHANNEL):
 
 if SUPPORT_CHAT and not re.match(r"^https?://", SUPPORT_CHAT):
     raise SystemExit("[ERROR] - Invalid SUPPORT_CHAT URL. Must start with https://")
+# -------- Extra Func -------- #
+SERVER_PLAYLIST_LIMIT = int(getenv("SERVER_PLAYLIST_LIMIT", 500))
+BANNED_USERS = filters.user()
