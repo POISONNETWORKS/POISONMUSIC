@@ -19,7 +19,6 @@ heroku()
 app = POISON()
 userbot = Userbot()
 
-
 from .platforms import *
 
 Apple = AppleAPI()
