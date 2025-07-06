@@ -187,7 +187,7 @@ async def play_command(client, message: Message, _, chat_id, video, channel, pla
             spotify = True
             if not config.SPOTIFY_CLIENT_ID or not config.SPOTIFY_CLIENT_SECRET:
                 return await mystic.edit_text(
-                    "»  sᴘᴏᴛɪғʏ ɪs ɴᴏᴛ sᴜᴘᴘᴏʀᴛᴇᴅ ʏᴇᴛ.\n\nᴘʟᴇᴀsᴇ ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ."
+                    "»  sᴘσᴛɪғʏ ɪs ησᴛ sυᴘᴘσʀᴛєᴅ ʏєᴛ.\n\nᴘʟєᴧsє ᴛʀʏ ᴧɢᴧɪη ʟᴧᴛєʀ."
                 )
 
             if "track" in url:
@@ -538,10 +538,10 @@ async def play_music(client, CallbackQuery, _):
 async def anonymous_check(client, CallbackQuery):
     try:
         await CallbackQuery.answer(
-            "» ʀᴇᴠᴇʀᴛ ʙᴀᴄᴋ ᴛᴏ ᴜsᴇʀ ᴀᴄᴄᴏᴜɴᴛ :\n\n"
-            "ᴏᴘᴇɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ sᴇᴛᴛɪɴɢs.\n"
-            "-> ᴀᴅᴍɪɴɪsᴛʀᴀᴛᴏʀs\n-> ᴄʟɪᴄᴋ ᴏɴ ʏᴏᴜʀ ɴᴀᴍᴇ\n"
-            "-> ᴜɴᴄʜᴇᴄᴋ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ ᴘᴇʀᴍɪssɪᴏɴs.",
+            "» ʀєᴠєʀᴛ ʙᴧᴄᴋ ᴛσ υsєʀ ᴧᴄᴄσυηᴛ :\n\n"
+            "σᴘєη ʏσυʀ ɢʀσυᴘ sєᴛᴛɪηɢs.\n"
+            "-> ᴧᴅϻɪηɪsᴛʀᴧᴛσʀs\n-> ᴄʟɪᴄᴋ ση ʏσυʀ ηᴧϻє\n"
+            "-> υηᴄʜєᴄᴋ ᴧησηʏϻσυs ᴧᴅϻɪη ᴘєʀϻɪssɪσηs.",
             show_alert=True,
         )
     except:
