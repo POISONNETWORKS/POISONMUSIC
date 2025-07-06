@@ -24,7 +24,7 @@ def AdminRightsCheck(mystic):
         if await is_maintenance() is False:
             if message.from_user.id not in SUDOERS:
                 return await message.reply_text(
-                    text=f"{app.mention} ɪs ᴜɴᴅᴇʀ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ, ᴠɪsɪᴛ <a href={SUPPORT_CHAT}>sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ</a> ғᴏʀ ᴋɴᴏᴡɪɴɢ ᴛʜᴇ ʀᴇᴀsᴏɴ.",
+                    text=f"{app.mention} ɪs υηᴅєʀ ϻᴧɪηᴛєηᴧηᴄє, ᴠɪsɪᴛ <a href={SUPPORT_CHAT}>sυᴘᴘσʀᴛ ᴄʜᴧᴛ</a> ϝσʀ ᴋησᴡɪηɢ ᴛʜє ʀєᴧsση.",
                     disable_web_page_preview=True,
                 )
 
@@ -43,7 +43,7 @@ def AdminRightsCheck(mystic):
                 [
                     [
                         InlineKeyboardButton(
-                            text="ʜᴏᴡ ᴛᴏ ғɪx ?",
+                            text="ʜσᴡ ᴛσ ϝɪx ?",
                             callback_data="AnonymousAdmin",
                         ),
                     ]
@@ -72,11 +72,11 @@ def AdminRightsCheck(mystic):
                     if message.from_user.id not in admins:
                         if await is_skipmode(message.chat.id):
                             upvote = await get_upvote_count(chat_id)
-                            text = f"""<b>ᴀᴅᴍɪɴ ʀɪɢʜᴛs ɴᴇᴇᴅᴇᴅ</b>
+                            text = f"""<b>ᴧᴅϻɪη ʀɪɢʜᴛs ηєєᴅєᴅ</b>
 
-ʀᴇғʀᴇsʜ ᴀᴅᴍɪɴ ᴄᴀᴄʜᴇ ᴠɪᴀ : /reload
+ʀєϝʀєsʜ ᴧᴅϻɪη ᴄᴧᴄʜє ᴠɪᴧ : /reload
 
-» {upvote} ᴠᴏᴛᴇs ɴᴇᴇᴅᴇᴅ ғᴏʀ ᴘᴇʀғᴏʀᴍɪɴɢ ᴛʜɪs ᴀᴄᴛɪᴏɴ."""
+» {upvote} ᴠσᴛєs ηєєᴅєᴅ ϝσʀ ᴘєʀϝσʀϻɪηɢ ᴛʜɪs ᴧᴄᴛɪση."""
 
                             command = message.command[0]
                             if command[0] == "c":
@@ -88,7 +88,7 @@ def AdminRightsCheck(mystic):
                                 [
                                     [
                                         InlineKeyboardButton(
-                                            text="ᴠᴏᴛᴇ",
+                                            text="ᴠσᴛє",
                                             callback_data=f"ADMIN  UpVote|{chat_id}_{MODE}",
                                         ),
                                     ]
@@ -120,7 +120,7 @@ def AdminActual(mystic):
         if await is_maintenance() is False:
             if message.from_user.id not in SUDOERS:
                 return await message.reply_text(
-                    text=f"{app.mention} ɪs ᴜɴᴅᴇʀ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ, ᴠɪsɪᴛ <a href={SUPPORT_CHAT}>sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ</a> ғᴏʀ ᴋɴᴏᴡɪɴɢ ᴛʜᴇ ʀᴇᴀsᴏɴ.",
+                    text=f"{app.mention} ɪs υηᴅєʀ ϻᴧɪηᴛєηᴧηᴄє, ᴠɪsɪᴛ <a href={SUPPORT_CHAT}>sυᴘᴘσʀᴛ ᴄʜᴧᴛ</a> ϝσʀ ᴋησᴡɪηɢ ᴛʜє ʀєᴧsση.",
                     disable_web_page_preview=True,
                 )
 
@@ -139,7 +139,7 @@ def AdminActual(mystic):
                 [
                     [
                         InlineKeyboardButton(
-                            text="ʜᴏᴡ ᴛᴏ ғɪx ?",
+                            text="ʜσᴡ ᴛσ ϝɪx ?",
                             callback_data="AnonymousAdmin",
                         ),
                     ]
@@ -165,7 +165,7 @@ def ActualAdminCB(mystic):
         if await is_maintenance() is False:
             if CallbackQuery.from_user.id not in SUDOERS:
                 return await CallbackQuery.answer(
-                    f"{app.mention} ɪs ᴜɴᴅᴇʀ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ, ᴠɪsɪᴛ sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ ғᴏʀ ᴋɴᴏᴡɪɴɢ ᴛʜᴇ ʀᴇᴀsᴏɴ.",
+                    f"{app.mention} ɪs υηᴅєʀ ϻᴧɪηᴛєηᴧηᴄє, ᴠɪsɪᴛ sυᴘᴘσʀᴛ ᴄʜᴧᴛ ϝσʀ ᴋησᴡɪηɢ ᴛʜє ʀєᴧsση.",
                     show_alert=True,
                 )
         try:
