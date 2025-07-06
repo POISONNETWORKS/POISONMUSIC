@@ -6,7 +6,7 @@ from POISONMUSIC import app
 
 SUPPORT_CHAT = "PoisonMusicSupport"
 SUPPORT_BTN = InlineKeyboardMarkup(
-    [[InlineKeyboardButton("ꜱᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}")]]
+    [[InlineKeyboardButton("ꜱυᴘᴘσʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}")]]
 )
 
 CUTE_VIDEO = "https://telegra.ph/file/528d0563175669e123a75.mp4"
@@ -15,7 +15,7 @@ CUTE_VIDEO = "https://telegra.ph/file/528d0563175669e123a75.mp4"
 @app.on_message(filters.command("wish"))
 async def wish(_, m):
     if len(m.command) < 2:
-        return await m.reply_text("❌ ᴀᴅᴅ ʏᴏᴜʀ ᴡɪꜱʜ ʙᴀʙʏ 🥀!")
+        return await m.reply_text("❌ ᴧᴅᴅ ʏσυʀ ᴡɪꜱʜ ʙᴧʙʏ 🥀!")
 
     try:
         api = requests.get("https://nekos.best/api/v2/happy").json()
@@ -28,9 +28,9 @@ async def wish(_, m):
     name = m.from_user.first_name or "User"
 
     caption = (
-        f"✨ ʜᴇʏ {name}!\n"
-        f"🪄 ʏᴏᴜʀ ᴡɪꜱʜ: {text}\n"
-        f"📊 ᴘᴏꜱꜱɪʙɪʟɪᴛʏ: {wish_count}%"
+        f"✨ ʜєʏ {name}!\n"
+        f"🪄 ʏσυʀ ᴡɪꜱʜ: {text}\n"
+        f"📊 ᴘσꜱꜱɪʙɪʟɪᴛʏ: {wish_count}%"
     )
 
     await app.send_animation(
@@ -47,7 +47,7 @@ async def cute(_, message):
     mention = f"[{user.first_name}](tg://user?id={user.id})"
     percent = random.randint(1, 100)
 
-    caption = f"🍑 {mention} ɪꜱ {percent}% ᴄᴜᴛᴇ ʙᴀʙʏ 🥀"
+    caption = f"🍑 {mention} ɪꜱ {percent}% ᴄυᴛє ʙᴧʙʏ 🥀"
 
     await app.send_document(
         chat_id=message.chat.id,

@@ -10,7 +10,7 @@ IPQUALITYSCORE_API_KEY = '952ztTq41AxoXam43pStVjVNcEjo1ntQ'
 async def ip_info_and_score(_, message):
     if len(message.command) != 2:
         await message.reply_text(
-            "ᴘʟᴇᴀsᴇ ᴘʀᴏᴠɪᴅᴇ ᴀɴ ɪᴘ ᴀᴅᴅʀᴇss ᴀғᴛᴇʀ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ. ᴇxᴀᴍᴘʟᴇ**: `/ip 8.8.8.8`"
+            "ᴘʟєᴧsє ᴘʀσᴠɪᴅє ᴧη ɪᴘ ᴧᴅᴅʀєss ᴧϝᴛєʀ ᴛʜє ᴄσϻϻᴧηᴅ. єxᴧϻᴘʟє**: `/ip 8.8.8.8`"
         )
         return
 
@@ -21,7 +21,7 @@ async def ip_info_and_score(_, message):
     if ip_info is not None and ip_score is not None:
         response_message = (
             f"{ip_info}\n\n"
-            f"**ɪᴘ sᴄᴏʀᴇ ➪ {ip_score} {emoji} ({score_description})"
+            f"**ɪᴘ sᴄσʀє ➪ {ip_score} {emoji} ({score_description})"
         )
         await message.reply_text(response_message)
     else:

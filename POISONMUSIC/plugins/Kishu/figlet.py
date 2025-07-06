@@ -13,8 +13,8 @@ def figle(text: str):
     encoded_text = base64.b64encode(text.encode()).decode()
     keyboard = InlineKeyboardMarkup([
         [
-            InlineKeyboardButton(text="🌀 ᴄʜᴀɴɢᴇ", callback_data=f"figlet_{encoded_text}"),
-            InlineKeyboardButton(text="❌ ᴄʟᴏsᴇ", callback_data="close_reply")
+            InlineKeyboardButton(text="🌀 ᴄʜᴧηɢє", callback_data=f"figlet_{encoded_text}"),
+            InlineKeyboardButton(text="❌ ᴄʟσsє", callback_data="close_reply")
         ]
     ])
     return figlet_text, keyboard
@@ -28,7 +28,7 @@ async def figlet_command(client, message):
 
     figlet_result, keyboard = figle(text)
     await message.reply_text(
-        f"✨ ʜᴇʀᴇ ɪs ʏᴏᴜʀ ғɪɢʟᴇᴛ:\n<pre>{figlet_result}</pre>",
+        f"✨ ʜєʀє ɪs ʏσυʀ ғɪɢʟєᴛ:\n<pre>{figlet_result}</pre>",
         quote=True,
         reply_markup=keyboard
     )
@@ -40,7 +40,7 @@ async def figlet_callback(_, query: CallbackQuery):
         text = base64.b64decode(encoded_text).decode()
         figlet_result, keyboard = figle(text)
         await query.message.edit_text(
-            f"✨ ʜᴇʀᴇ ɪs ʏᴏᴜʀ ғɪɢʟᴇᴛ:\n<pre>{figlet_result}</pre>",
+            f"✨ ʜєʀє ɪs ʏσυʀ ғɪɢʟєᴛ:\n<pre>{figlet_result}</pre>",
             reply_markup=keyboard
         )
     except Exception as e:

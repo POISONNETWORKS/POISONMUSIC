@@ -19,7 +19,7 @@ headers = {
 async def weather_command(client: Client, message: Message):
     if len(message.command) == 1:
         return await message.reply_text(
-            "<b>ᴜsᴀɢᴇ:</b> <code>/weather city</code>\nExample: <code>/weather delhi</code>",
+            "<b>υsᴧɢє:</b> <code>/weather city</code>\nExample: <code>/weather delhi</code>",
             parse_mode=enums.ParseMode.HTML
         )
 
@@ -70,11 +70,11 @@ async def weather_command(client: Client, message: Message):
 
         weather_text = (
             f"<b>{location_name}</b> 🌍\n\n"
-            f"🌡️ <b>ᴛᴇᴍᴘᴇʀᴀᴛᴜʀᴇ:</b> <code>{obs.get('temperature', 'N/A')} °C</code>\n"
-            f"🥵 <b>ғᴇᴇʟs ʟɪᴋᴇ:</b> <code>{obs.get('temperatureFeelsLike', 'N/A')} °C</code>\n"
-            f"💧 <b>ʜᴜᴍɪᴅɪᴛʏ:</b> <code>{obs.get('relativeHumidity', 'N/A')}%</code>\n"
-            f"💨 <b>ᴡɪɴᴅ:</b> <code>{obs.get('windSpeed', 'N/A')} km/h</code>\n"
-            f"☁️ <b>ᴄᴏɴᴅɪᴛɪᴏɴ:</b> <i>{obs.get('wxPhraseLong', 'N/A')}</i>"
+            f"🌡️ <b>ᴛєϻᴘєʀᴧᴛυʀє:</b> <code>{obs.get('temperature', 'N/A')} °C</code>\n"
+            f"🥵 <b>ϝєєʟs ʟɪᴋє:</b> <code>{obs.get('temperatureFeelsLike', 'N/A')} °C</code>\n"
+            f"💧 <b>ʜυϻɪᴅɪᴛʏ:</b> <code>{obs.get('relativeHumidity', 'N/A')}%</code>\n"
+            f"💨 <b>ᴡɪηᴅ:</b> <code>{obs.get('windSpeed', 'N/A')} km/h</code>\n"
+            f"☁️ <b>ᴄσηᴅɪᴛɪση:</b> <i>{obs.get('wxPhraseLong', 'N/A')}</i>"
         )
 
         await message.reply_text(weather_text, parse_mode=enums.ParseMode.HTML)

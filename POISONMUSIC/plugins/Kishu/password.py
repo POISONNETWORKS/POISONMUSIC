@@ -7,7 +7,7 @@ from config import BOT_USERNAME
 
 @app.on_message(filters.command(["genpassword", "genpw"]))
 async def password(bot, message):
-    processing = await message.reply_text("Pʀᴏᴄᴇꜱꜱɪɴɢ...")
+    processing = await message.reply_text("ᴘʀσᴄєꜱꜱɪηɢ...")
 
     characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+"
     
@@ -26,8 +26,8 @@ async def password(bot, message):
     generated_password = "".join(random.choices(characters, k=length))
 
     reply_text = (
-        f"<b>Lɪᴍɪᴛ:</b> {length}\n"
-        f"<b>Pᴀꜱꜱᴡᴏʀᴅ:</b> <code>{generated_password}</code>"
+        f"<b>ʟɪϻɪᴛ:</b> {length}\n"
+        f"<b>ᴘᴧꜱꜱᴡσʀᴅ:</b> <code>{generated_password}</code>"
     )
 
     buttons = InlineKeyboardMarkup([
