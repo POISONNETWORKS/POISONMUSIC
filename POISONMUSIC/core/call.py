@@ -245,7 +245,7 @@ class Call:
             raise AssistantErr(_["call_10"])
         except Exception as e:
             raise AssistantErr(
-                f"ᴜɴᴀʙʟᴇ ᴛᴏ ᴊᴏɪɴ ᴛʜᴇ ɢʀᴏᴜᴘ ᴄᴀʟʟ.\nRᴇᴀsᴏɴ: {e}"
+                f"υηᴧʙʟє ᴛσ ᴊσɪη ᴛʜє ɢʀσυᴘ ᴄᴧʟʟ.\nRєᴧsση: {e}"
             )
         self.active_calls.add(chat_id)
         await add_active_chat(chat_id)
@@ -517,9 +517,9 @@ class Call:
                 exc_type, exc_obj, exc_tb = sys.exc_info()
                 full_trace = "".join(traceback.format_exception(exc_type, exc_obj, exc_tb))
                 caption = (
-                    f"🚨 <b>Stream Update Error</b>\n"
-                    f"📍 <b>Update Type:</b> <code>{type(update).__name__}</code>\n"
-                    f"📍 <b>Error Type:</b> <code>{exc_type.__name__}</code>"
+                    f"🚨 <b>sᴛʀєᴧϻ υᴘᴅᴧᴛє єʀʀσʀ</b>\n"
+                    f"📍 <b>υᴘᴅᴧᴛє ᴛʏᴘє :</b> <code>{type(update).__name__}</code>\n"
+                    f"📍 <b>єʀʀσʀ ᴛʏᴘє :</b> <code>{exc_type.__name__}</code>"
                 )
                 filename = f"update_error_{getattr(update, 'chat_id', 'unknown')}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
                 await send_large_error(full_trace, caption, filename)
