@@ -21,16 +21,16 @@ async def mention_members(client, message, message_pool, stop_cmd):
     chat_id = message.chat.id
 
     if message.chat.type == ChatType.PRIVATE:
-        return await message.reply_text("❗ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴡᴏʀᴋs ᴏɴʟʏ ɪɴ ɢʀᴏᴜᴘs.")
+        return await message.reply_text("❗ ᴛʜɪs ᴄσϻϻᴧηᴅ ᴡσʀᴋs σηʟʏ ɪη ɢʀσυᴘs.")
 
     if not await is_admin(message):
-        return await message.reply_text("🚫 ᴏɴʟʏ ᴀᴅᴍɪɴs ᴄᴀɴ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ.")
+        return await message.reply_text("🚫 σηʟʏ ᴧᴅϻɪηs ᴄᴧη υsє ᴛʜɪs ᴄσϻϻᴧηᴅ.")
 
     if chat_id in spam_chats:
         stop_command = active_tags.get(chat_id, "tagstop")
         return await message.reply_text(
-            f"⚠️ ᴀ ᴛᴀɢɢɪɴɢ sᴇssɪᴏɴ ɪs ᴀʟʀᴇᴀᴅʏ ʀᴜɴɴɪɴɢ.\n"
-            f"➤ ᴜsᴇ /{stop_command} ᴛᴏ sᴛᴏᴘ ɪᴛ."
+            f"⚠️ ᴧ ᴛᴧɢɢɪηɢ sєssɪση ɪs ᴧʟʀєᴧᴅʏ ʀυηηɪηɢ.\n"
+            f"➤ υsє /{stop_command} ᴛσ sᴛσᴘ ɪᴛ."
         )
 
     spam_chats.add(chat_id)
@@ -57,7 +57,7 @@ async def mention_members(client, message, message_pool, stop_cmd):
     finally:
         spam_chats.discard(chat_id)
         active_tags.pop(chat_id, None)
-        await client.send_message(chat_id, "✅ ᴛᴀɢɢɪɴɢ sᴇssɪᴏɴ ᴇɴᴅᴇᴅ.")
+        await client.send_message(chat_id, "✅ ᴛᴧɢɢɪηɢ sєssɪση єηᴅєᴅ.")
 
 @app.on_message(filters.command("gntag", prefixes=["/", "!"]))
 async def gntag(client, message):
@@ -88,11 +88,11 @@ async def stop_tagging(client, message):
     chat_id = message.chat.id
 
     if not await is_admin(message):
-        return await message.reply_text("🚫 ᴏɴʟʏ ᴀᴅᴍɪɴs ᴄᴀɴ sᴛᴏᴘ ᴛᴀɢɢɪɴɢ.")
+        return await message.reply_text("🚫 σηʟʏ ᴧᴅϻɪηs ᴄᴧη sᴛσᴘ ᴛᴧɢɢɪηɢ.")
 
     if chat_id not in spam_chats:
-        return await message.reply_text("⚠️ ɴᴏ ᴀᴄᴛɪᴠᴇ ᴛᴀɢɢɪɴɢ sᴇssɪᴏɴ ғᴏᴜɴᴅ.")
+        return await message.reply_text("⚠️ ησ ᴧᴄᴛɪᴠє ᴛᴧɢɢɪηɢ sєssɪση ғσυηᴅ.")
 
     spam_chats.discard(chat_id)
     active_tags.pop(chat_id, None)
-    await message.reply_text("✅ ᴍᴇɴᴛɪᴏɴɪɴɢ sᴛᴏᴘᴘᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ.")
+    await message.reply_text("✅ ϻєηᴛɪσηɪηɢ sᴛσᴘᴘєᴅ sυᴄᴄєssғυʟʟʏ.")

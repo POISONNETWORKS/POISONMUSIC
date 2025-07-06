@@ -21,111 +21,111 @@ async def has_permission(user_id: int, chat_id: int, permission: str) -> bool:
 @app.on_message(filters.command("pin") & admin_filter)
 async def pin(_, message: Message):
     if not is_group(message):
-        return await message.reply_text("**ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴡᴏʀᴋs ᴏɴʟʏ ɪɴ ɢʀᴏᴜᴘs!**")
+        return await message.reply_text("**ᴛʜɪs ᴄσϻϻᴧηᴅ ᴡσʀᴋs σηʟʏ ɪη ɢʀσυᴘs!**")
 
     if not message.reply_to_message:
-        return await message.reply_text("**ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ᴘɪɴ ɪᴛ!**")
+        return await message.reply_text("**ʀєᴘʟʏ ᴛσ ᴧ ϻєssᴧɢє ᴛσ ᴘɪη ɪᴛ!**")
 
     if not await has_permission(message.from_user.id, message.chat.id, "can_pin_messages"):
-        return await message.reply_text("**ʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴘᴇʀᴍɪssɪᴏɴ ᴛᴏ ᴘɪɴ ᴍᴇssᴀɢᴇs.**")
+        return await message.reply_text("**ʏσυ ᴅση'ᴛ ʜᴧᴠє ᴘєʀϻɪssɪση ᴛσ ᴘɪη ϻєssᴧɢєs.**")
 
     try:
         await message.reply_to_message.pin()
         await message.reply_text(
-            f"**sᴜᴄᴄᴇssғᴜʟʟʏ ᴘɪɴɴᴇᴅ ᴍᴇssᴀɢᴇ!**\n\n**ᴄʜᴀᴛ:** {message.chat.title}\n**ᴀᴅᴍɪɴ:** {message.from_user.mention}",
+            f"**sυᴄᴄєssғυʟʟʏ ᴘɪηηєᴅ ϻєssᴧɢє!**\n\n**ᴄʜᴧᴛ:** {message.chat.title}\n**ᴧᴅϻɪη:** {message.from_user.mention}",
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("📝 ᴠɪᴇᴡ ᴍᴇssᴀɢᴇ", url=message.reply_to_message.link)]]
+                [[InlineKeyboardButton("📝 ᴠɪєᴡ ϻєssᴧɢє", url=message.reply_to_message.link)]]
             )
         )
     except Exception as e:
-        await message.reply_text(f"**ғᴀɪʟᴇᴅ ᴛᴏ ᴘɪɴ ᴍᴇssᴀɢᴇ:**\n`{str(e)}`")
+        await message.reply_text(f"**ғᴧɪʟєᴅ ᴛσ ᴘɪη ϻєssᴧɢє:**\n`{str(e)}`")
 
 # ------------------- Unpin Message ------------------- #
 
 @app.on_message(filters.command("unpin") & admin_filter)
 async def unpin(_, message: Message):
     if not is_group(message):
-        return await message.reply_text("**ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴡᴏʀᴋs ᴏɴʟʏ ɪɴ ɢʀᴏᴜᴘs!**")
+        return await message.reply_text("**ᴛʜɪs ᴄσϻϻᴧηᴅ ᴡσʀᴋs σηʟʏ ɪη ɢʀσυᴘs!**")
 
     if not message.reply_to_message:
-        return await message.reply_text("**ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ᴜɴᴘɪɴ ɪᴛ!**")
+        return await message.reply_text("**ʀєᴘʟʏ ᴛσ ᴧ ϻєssᴧɢє ᴛσ υηᴘɪη ɪᴛ!**")
 
     if not await has_permission(message.from_user.id, message.chat.id, "can_pin_messages"):
-        return await message.reply_text("**ʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴘᴇʀᴍɪssɪᴏɴ ᴛᴏ ᴜɴᴘɪɴ ᴍᴇssᴀɢᴇs.**")
+        return await message.reply_text("**ʏσυ ᴅση'ᴛ ʜᴧᴠє ᴘєʀϻɪssɪση ᴛσ υηᴘɪη ϻєssᴧɢєs.**")
 
     try:
         await message.reply_to_message.unpin()
         await message.reply_text(
-            f"**sᴜᴄᴄᴇssғᴜʟʟʏ ᴜɴᴘɪɴɴᴇᴅ ᴍᴇssᴀɢᴇ!**\n\n**ᴄʜᴀᴛ:** {message.chat.title}\n**ᴀᴅᴍɪɴ:** {message.from_user.mention}",
+            f"**sυᴄᴄєssғυʟʟʏ υηᴘɪηηєᴅ ϻєssᴧɢє!**\n\n**ᴄʜᴧᴛ:** {message.chat.title}\n**ᴧᴅϻɪη:** {message.from_user.mention}",
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("📝 ᴠɪᴇᴡ ᴍᴇssᴀɢᴇ", url=message.reply_to_message.link)]]
+                [[InlineKeyboardButton("📝 ᴠɪєᴡ ϻєssᴧɢє", url=message.reply_to_message.link)]]
             )
         )
     except Exception as e:
-        await message.reply_text(f"**ғᴀɪʟᴇᴅ ᴛᴏ ᴜɴᴘɪɴ ᴍᴇssᴀɢᴇ:**\n`{str(e)}`")
+        await message.reply_text(f"**ғᴧɪʟєᴅ ᴛσ υηᴘɪη ϻєssᴧɢє:**\n`{str(e)}`")
 
 # ------------------- Set / Remove Photo, Title, Description ------------------- #
 
 @app.on_message(filters.command("setphoto") & admin_filter)
 async def set_photo(_, message: Message):
     if not is_group(message):
-        return await message.reply_text("**ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴡᴏʀᴋs ᴏɴʟʏ ɪɴ ɢʀᴏᴜᴘs!**")
+        return await message.reply_text("**ᴛʜɪs ᴄσϻϻᴧηᴅ ᴡσʀᴋs σηʟʏ ɪη ɢʀσυᴘs!**")
     if not message.reply_to_message:
-        return await message.reply_text("**ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴘʜᴏᴛᴏ ᴏʀ ᴅᴏᴄᴜᴍᴇɴᴛ.**")
+        return await message.reply_text("**ʀєᴘʟʏ ᴛσ ᴧ ᴘʜσᴛσ σʀ ᴅσᴄυϻєηᴛ.**")
     if not await has_permission(message.from_user.id, message.chat.id, "can_change_info"):
-        return await message.reply_text("**ʏᴏᴜ ʟᴀᴄᴋ ᴘᴇʀᴍɪssɪᴏɴ ᴛᴏ ᴄʜᴀɴɢᴇ ɢʀᴏᴜᴘ ɪɴғᴏ.**")
+        return await message.reply_text("**ʏσυ ʟᴧᴄᴋ ᴘєʀϻɪssɪση ᴛσ ᴄʜᴧηɢє ɢʀσυᴘ ɪηғσ.**")
     try:
         photo = await message.reply_to_message.download()
         await message.chat.set_photo(photo=photo)
-        await message.reply_text(f"**ɢʀᴏᴜᴘ ᴘʜᴏᴛᴏ ᴜᴘᴅᴀᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ!**\nʙʏ {message.from_user.mention}")
+        await message.reply_text(f"**ɢʀσυᴘ ᴘʜσᴛσ υᴘᴅᴧᴛєᴅ sυᴄᴄєssғυʟʟʏ!**\nʙʏ {message.from_user.mention}")
     except Exception as e:
-        await message.reply_text(f"**ғᴀɪʟᴇᴅ ᴛᴏ sᴇᴛ ᴘʜᴏᴛᴏ:**\n`{str(e)}`")
+        await message.reply_text(f"**ғᴧɪʟєᴅ ᴛσ sєᴛ ᴘʜσᴛσ:**\n`{str(e)}`")
 
 
 @app.on_message(filters.command("removephoto") & admin_filter)
 async def remove_photo(_, message: Message):
     if not is_group(message):
-        return await message.reply_text("**ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴡᴏʀᴋs ᴏɴʟʏ ɪɴ ɢʀᴏᴜᴘs!**")
+        return await message.reply_text("**ᴛʜɪs ᴄσϻϻᴧηᴅ ᴡσʀᴋs σηʟʏ ɪη ɢʀσυᴘs!**")
     if not await has_permission(message.from_user.id, message.chat.id, "can_change_info"):
-        return await message.reply_text("**ʏᴏᴜ ʟᴀᴄᴋ ᴘᴇʀᴍɪssɪᴏɴ ᴛᴏ ᴄʜᴀɴɢᴇ ɢʀᴏᴜᴘ ɪɴғᴏ.**")
+        return await message.reply_text("**ʏσυ ʟᴧᴄᴋ ᴘєʀϻɪssɪση ᴛσ ᴄʜᴧηɢє ɢʀσυᴘ ɪηғσ.**")
     try:
         await app.delete_chat_photo(message.chat.id)
-        await message.reply_text(f"**ɢʀᴏᴜᴘ ᴘʜᴏᴛᴏ ʀᴇᴍᴏᴠᴇᴅ!**\nʙʏ {message.from_user.mention}")
+        await message.reply_text(f"**ɢʀσυᴘ ᴘʜσᴛσ ʀєϻσᴠєᴅ!**\nʙʏ {message.from_user.mention}")
     except Exception as e:
-        await message.reply_text(f"**ғᴀɪʟᴇᴅ ᴛᴏ ʀᴇᴍᴏᴠᴇ ᴘʜᴏᴛᴏ:**\n`{str(e)}`")
+        await message.reply_text(f"**ғᴧɪʟєᴅ ᴛσ ʀєϻσᴠє ᴘʜσᴛσ:**\n`{str(e)}`")
 
 
 @app.on_message(filters.command("settitle") & admin_filter)
 async def set_title(_, message: Message):
     if not is_group(message):
-        return await message.reply_text("**ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴡᴏʀᴋs ᴏɴʟʏ ɪɴ ɢʀᴏᴜᴘs!**")
+        return await message.reply_text("**ᴛʜɪs ᴄσϻϻᴧηᴅ ᴡσʀᴋs σηʟʏ ɪη ɢʀσυᴘs!**")
     if not await has_permission(message.from_user.id, message.chat.id, "can_change_info"):
-        return await message.reply_text("**ʏᴏᴜ ʟᴀᴄᴋ ᴘᴇʀᴍɪssɪᴏɴ ᴛᴏ ᴄʜᴀɴɢᴇ ɢʀᴏᴜᴘ ɪɴғᴏ.**")
+        return await message.reply_text("**ʏσυ ʟᴧᴄᴋ ᴘєʀϻɪssɪση ᴛσ ᴄʜᴧηɢє ɢʀσυᴘ ɪηғσ.**")
 
     title = message.text.split(None, 1)[1] if len(message.command) > 1 else (message.reply_to_message.text if message.reply_to_message else None)
     if not title:
-        return await message.reply_text("**ᴘʟᴇᴀsᴇ ᴘʀᴏᴠɪᴅᴇ ᴀ ɴᴇᴡ ᴛɪᴛʟᴇ.**")
+        return await message.reply_text("**ᴘʟєᴧsє ᴘʀσᴠɪᴅє ᴧ ηєᴡ ᴛɪᴛʟє.**")
 
     try:
         await message.chat.set_title(title)
-        await message.reply_text(f"**ɢʀᴏᴜᴘ ɴᴀᴍᴇ ᴄʜᴀɴɢᴇᴅ ᴛᴏ:** {title}\nʙʏ {message.from_user.mention}")
+        await message.reply_text(f"**ɢʀσυᴘ ηᴧϻє ᴄʜᴧηɢєᴅ ᴛσ:** {title}\nʙʏ {message.from_user.mention}")
     except Exception as e:
-        await message.reply_text(f"**ғᴀɪʟᴇᴅ ᴛᴏ sᴇᴛ ᴛɪᴛʟᴇ:**\n`{str(e)}`")
+        await message.reply_text(f"**ғᴧɪʟєᴅ ᴛσ sєᴛ ᴛɪᴛʟє:**\n`{str(e)}`")
 
 
 @app.on_message(filters.command("setdiscription") & admin_filter)
 async def set_description(_, message: Message):
     if not is_group(message):
-        return await message.reply_text("**ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴡᴏʀᴋs ᴏɴʟʏ ɪɴ ɢʀᴏᴜᴘs!**")
+        return await message.reply_text("**ᴛʜɪs ᴄσϻϻᴧηᴅ ᴡσʀᴋs σηʟʏ ɪη ɢʀσυᴘs!**")
     if not await has_permission(message.from_user.id, message.chat.id, "can_change_info"):
-        return await message.reply_text("**ʏᴏᴜ ʟᴀᴄᴋ ᴘᴇʀᴍɪssɪᴏɴ ᴛᴏ ᴄʜᴀɴɢᴇ ɢʀᴏᴜᴘ ɪɴғᴏ.**")
+        return await message.reply_text("**ʏσυ ʟᴧᴄᴋ ᴘєʀϻɪssɪση ᴛσ ᴄʜᴧηɢє ɢʀσυᴘ ɪηғσ.**")
 
     desc = message.text.split(None, 1)[1] if len(message.command) > 1 else (message.reply_to_message.text if message.reply_to_message else None)
     if not desc:
-        return await message.reply_text("**ᴘʟᴇᴀsᴇ ᴘʀᴏᴠɪᴅᴇ ᴀ ɴᴇᴡ ᴅᴇsᴄʀɪᴘᴛɪᴏɴ.**")
+        return await message.reply_text("**ᴘʟєᴧsє ᴘʀσᴠɪᴅє ᴧ ηєᴡ ᴅєsᴄʀɪᴘᴛɪση.**")
 
     try:
         await message.chat.set_description(desc)
-        await message.reply_text(f"**ɢʀᴏᴜᴘ ᴅᴇsᴄʀɪᴘᴛɪᴏɴ ᴜᴘᴅᴀᴛᴇᴅ!**\nʙʏ {message.from_user.mention}")
+        await message.reply_text(f"**ɢʀσυᴘ ᴅєsᴄʀɪᴘᴛɪση υᴘᴅᴧᴛєᴅ!**\nʙʏ {message.from_user.mention}")
     except Exception as e:
-        await message.reply_text(f"**ғᴀɪʟᴇᴅ ᴛᴏ sᴇᴛ ᴅᴇsᴄʀɪᴘᴛɪᴏɴ:**\n`{str(e)}`")
+        await message.reply_text(f"**ғᴧɪʟєᴅ ᴛσ sєᴛ ᴅєsᴄʀɪᴘᴛɪση:**\n`{str(e)}`")

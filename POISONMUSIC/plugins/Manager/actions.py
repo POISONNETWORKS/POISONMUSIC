@@ -56,9 +56,9 @@ def _format_success(action: str, msg: Message, uid: int, name: str, reason: Opti
     user_m  = mention(uid, name)
     admin_m = mention(msg.from_user.id, msg.from_user.first_name)
     text = (
-        f"» {action} ᴀ ᴜsᴇʀ ɪɴ {chat}\n"
-        f" ᴜsᴇʀ  : {user_m}\n"
-        f" ᴀᴅᴍɪɴ : {admin_m}"
+        f"» {action} ᴧ υsєʀ ɪη {chat}\n"
+        f" υsєʀ  : {user_m}\n"
+        f" ᴧᴅϻɪη : {admin_m}"
     )
     if reason:
         text += f"\nReason: {reason}"
