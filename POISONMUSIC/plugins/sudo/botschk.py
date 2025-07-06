@@ -24,12 +24,12 @@ async def check_bots_command(client, message):
 
     processing_msg = await message.reply_photo(
         photo="https://graph.org/file/e6b215db83839e8edf831.jpg",
-        caption="**ᴄʜᴇᴄᴋɪɴɢ ʙᴏᴛs sᴛᴀᴛs ᴀʟɪᴠᴇ ᴏʀ ᴅᴇᴀᴅ...**"
+        caption="**ᴄʜєᴄᴋɪηɢ ʙσᴛs sᴛᴧᴛs ᴧʟɪᴠє σʀ ᴅєᴧᴅ...**"
     )
 
     start_time = datetime.now()
 
-    response = "**ʙᴏᴛs sᴛᴀᴛᴜs ᴅᴇᴀᴅ ᴏʀ ᴀʟɪᴠᴇ ᴄʜᴇᴄᴋᴇʀ**\n\n"
+    response = "**ʙσᴛs sᴛᴧᴛυs ᴅєᴧᴅ σʀ ᴧʟɪᴠє ᴄʜєᴄᴋєʀ**\n\n"
 
     for bot_username in BOT_LIST:
         try:
@@ -39,13 +39,13 @@ async def check_bots_command(client, message):
             await asyncio.sleep(3)
             
             async for bot_message in userbot.one.get_chat_history(bot.id, limit=1):
-                status = "ᴏɴʟɪɴᴇ ✨" if bot_message.from_user.id == bot.id else "ᴏғғʟɪɴᴇ ❄"
-                response += f"╭⎋ {bot.mention}\n╰⊚ **sᴛᴀᴛᴜs: {status}**\n\n"
+                status = "σηʟɪηє ✨" if bot_message.from_user.id == bot.id else "σғғʟɪηє ❄"
+                response += f"╭⎋ {bot.mention}\n╰⊚ **sᴛᴧᴛυs: {status}**\n\n"
         except Exception:
-            response += f"╭⎋ {bot_username}\n╰⊚ **sᴛᴀᴛᴜs: ᴇʀʀᴏʀ ❌**\n\n"
+            response += f"╭⎋ {bot_username}\n╰⊚ **sᴛᴧᴛυs: єʀʀσʀ ❌**\n\n"
     
     last_checked_time = start_time.strftime("%Y-%m-%d")
-    await processing_msg.edit_caption(f"{response}⏲️ ʟᴀsᴛ ᴄʜᴇᴄᴋ: {last_checked_time}")
+    await processing_msg.edit_caption(f"{response}⏲️ ʟᴧsᴛ ᴄʜєᴄᴋ: {last_checked_time}")
 
     if userbot.one.is_connected:
         await userbot.one.stop()

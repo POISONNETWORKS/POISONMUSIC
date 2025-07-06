@@ -52,7 +52,7 @@ async def all_chats(client, message: Message, _):
         try:
             title = (await app.get_chat(chat_id)).title
         except:
-            title = "ᴘʀɪᴠᴀᴛᴇ ᴄʜᴀᴛ"
+            title = "ᴘʀɪᴠᴧᴛє ᴄʜᴧᴛ"
         j = 1
         text += f"{count}. {title}[<code>{chat_id}</code>]\n"
     if j == 0:

@@ -88,23 +88,23 @@ async def update_(client, message, _):
     for info in repo.iter_commits(f"HEAD..origin/{config.UPSTREAM_BRANCH}"):
         updates += (
             f"<b>\u2793 #{info.count()}: <a href={REPO_}/commit/{info}>{info.summary}</a> ʙʏ -> {info.author}</b>\n"
-            f"\t\t\t\t<b>\u279e ᴄᴏᴍᴍɪᴛᴇᴅ ᴏɴ :</b> {ordinal(int(datetime.fromtimestamp(info.committed_date).strftime('%d')))} "
+            f"\t\t\t\t<b>\u279e ᴄσϻϻɪᴛєᴅ ση :</b> {ordinal(int(datetime.fromtimestamp(info.committed_date).strftime('%d')))} "
             f"{datetime.fromtimestamp(info.committed_date).strftime('%b')}, {datetime.fromtimestamp(info.committed_date).strftime('%Y')}\n\n"
         )
 
     _update_response_ = (
-        "<b>ᴀ ɴᴇᴡ ᴜᴩᴅᴀᴛᴇ ɪs ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ᴛʜᴇ ʙᴏᴛ !</b>\n\n"
-        "\u2793 ᴩᴜsʜɪɴɢ ᴜᴩᴅᴀᴛᴇs ɴᴏᴡ\n\n"
-        "<b><u>ᴜᴩᴅᴀᴛᴇs:</u></b>\n\n"
+        "<b>ᴧ ηєᴡ υᴩᴅᴧᴛє ɪs ᴧᴠᴧɪʟᴧʙʟє ғσʀ ᴛʜє ʙσᴛ !</b>\n\n"
+        "\u2793 ᴩυsʜɪηɢ υᴩᴅᴧᴛєs ησᴡ\n\n"
+        "<b><u>υᴩᴅᴧᴛєs:</u></b>\n\n"
     )
     _final_updates_ = _update_response_ + updates
 
     if len(_final_updates_) > 4096:
         url = await POISONBIN(updates)
         nrs = await response.edit(
-            f"<b>ᴀ ɴᴇᴡ ᴜᴩᴅᴀᴛᴇ ɪs ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ᴛʜᴇ ʙᴏᴛ !</b>\n\n"
-            f"\u2793 ᴩᴜsʜɪɴɢ ᴜᴩᴅᴀᴛᴇs ɴᴏᴡ\n\n"
-            f"<u><b>ᴜᴩᴅᴀᴛᴇs :</b></u>\n\n<a href={url}>ᴄʜᴇᴄᴋ ᴜᴩᴅᴀᴛᴇs</a>"
+            f"<b>ᴧ ηєᴡ υᴩᴅᴧᴛє ɪs ᴧᴠᴧɪʟᴧʙʟє ғσʀ ᴛʜє ʙσᴛ !</b>\n\n"
+            f"\u2793 ᴩυsʜɪηɢ υᴩᴅᴧᴛєs ησᴡ\n\n"
+            f"<u><b>υᴩᴅᴧᴛєs :</b></u>\n\n<a href={url}>ᴄʜєᴄᴋ υᴩᴅᴧᴛєs</a>"
         )
     else:
         nrs = await response.edit(_final_updates_, disable_web_page_preview=True)
@@ -144,13 +144,13 @@ async def update_(client, message, _):
 
 @app.on_message(filters.command(["restart"]) & SUDOERS)
 async def restart_(_, message):
-    response = await message.reply_text("ʀᴇsᴛᴀʀᴛɪɴɢ...")
+    response = await message.reply_text("ʀєsᴛᴧʀᴛɪηɢ...")
     ac_chats = await get_active_chats()
     for x in ac_chats:
         try:
             await app.send_message(
                 chat_id=int(x),
-                text=f"{app.mention} ɪs ʀᴇsᴛᴀʀᴛɪɴɢ...\n\nʏᴏᴜ ᴄᴀɴ sᴛᴀʀᴛ ᴩʟᴀʏɪɴɢ ᴀɢᴀɪɴ ᴀғᴛᴇʀ 15-20 sᴇᴄᴏɴᴅs.",
+                text=f"{app.mention} ɪs ʀєsᴛᴧʀᴛɪηɢ...\n\nʏσυ ᴄᴧη sᴛᴧʀᴛ ᴩʟᴧʏɪηɢ ᴧɢᴧɪη ᴧғᴛєʀ 15-20 sєᴄσηᴅs.",
             )
             await remove_active_chat(x)
             await remove_active_video_chat(x)
@@ -160,7 +160,7 @@ async def restart_(_, message):
     cleanup_storage()
 
     await response.edit_text(
-        "» ʀᴇsᴛᴀʀᴛ ᴘʀᴏᴄᴇss sᴛᴀʀᴛᴇᴅ, ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ғᴏʀ ғᴇᴡ sᴇᴄᴏɴᴅs ᴜɴᴛɪʟ ᴛʜᴇ ʙᴏᴛ sᴛᴀʀᴛs..."
+        "➠ ʀєsᴛᴧʀᴛ ᴘʀσᴄєss sᴛᴧʀᴛєᴅ, ᴘʟєᴧsє ᴡᴧɪᴛ ғσʀ ғєᴡ sєᴄσηᴅs υηᴛɪʟ ᴛʜє ʙσᴛ sᴛᴧʀᴛs..."
     )
 
     os.execv(sys.executable, [sys.executable, "-m", "POISONMUSIC"])

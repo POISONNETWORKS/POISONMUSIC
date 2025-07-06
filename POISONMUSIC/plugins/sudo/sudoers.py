@@ -82,7 +82,7 @@ async def view_sudo_list_callback(client, callback_query: CallbackQuery):
         except:
             continue
 
-    keyboard.append([InlineKeyboardButton("๏ ʙᴧᴀᴄᴋ ๏", callback_data="sudo_list_back")])
+    keyboard.append([InlineKeyboardButton("๏ ʙᴧᴄᴋ ๏", callback_data="sudo_list_back")])
     await callback_query.message.edit_caption(caption=caption, reply_markup=InlineKeyboardMarkup(keyboard))
 
 # ─── Callback: Back to List Menu ────────────────────────────
