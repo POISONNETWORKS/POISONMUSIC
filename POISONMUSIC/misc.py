@@ -26,7 +26,7 @@ XCB = [
 def dbb():
     global db
     db = {}
-    LOGGER(__name__).info("ᴅᴀᴛᴀʙᴀsᴇ ʟᴏᴀᴅᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ💗")
+    LOGGER(__name__).info("ᴅᴧᴛᴧʙᴧsє ʟσᴧᴅєᴅ sυᴄᴄєssϝυʟʟʏ💗")
 
 async def sudo():
     global SUDOERS
@@ -44,7 +44,7 @@ async def sudo():
     for user_id in sudoers:
         SUDOERS.add(user_id)
 
-    LOGGER(__name__).info("sᴜᴅᴏ ᴜsᴇʀs ᴅᴏɴᴇ..")
+    LOGGER(__name__).info("sυᴅσ υsєʀs ᴅσηє..")
 
 def heroku():
     global HAPP
@@ -53,6 +53,6 @@ def heroku():
             try:
                 Heroku = heroku3.from_key(HEROKU_API_KEY)
                 HAPP = Heroku.app(HEROKU_APP_NAME)
-                LOGGER(__name__).info("ʜᴇʀᴏᴋᴜ ᴀᴘᴘ ᴄᴏɴғɪɢᴜʀᴇᴅ..")
+                LOGGER(__name__).info("ʜєʀσᴋυ ᴧᴘᴘ ᴄσηϝɪɢυʀєᴅ..")
             except Exception:
-                LOGGER(__name__).warning("ʏᴏᴜ sʜᴏᴜʟᴅ ʜᴀᴠᴇ ɴᴏᴛ ғɪʟʟᴇᴅ ʜᴇʀᴏᴋᴜ ᴀᴘᴘ ɴᴀᴍᴇ ᴏʀ ᴀᴘɪ ᴋᴇʏ ᴄᴏʀʀᴇᴄᴛʟʏ ᴘʟᴇᴀsᴇ ᴄʜᴇᴄᴋ ɪᴛ...")
+                LOGGER(__name__).warning("ʏσυ sʜσυʟᴅ ʜᴧᴠє ησᴛ ϝɪʟʟєᴅ ʜєʀσᴋυ ᴧᴘᴘ ηᴧϻє σʀ ᴧᴘɪ ᴋєʏ ᴄσʀʀєᴄᴛʟʏ ᴘʟєᴧsє ᴄʜєᴄᴋ ɪᴛ...")

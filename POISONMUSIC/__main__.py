@@ -28,7 +28,7 @@ async def init():
 
     try:
         await fetch_and_store_cookies()
-        LOGGER("POISONMUSIC").info("ʏᴏᴜTᴜʙᴇ ᴄᴏᴏᴋɪᴇs ʟᴏᴀᴅᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ.")
+        LOGGER("POISONMUSIC").info("ʏσυTυʙє ᴄσσᴋɪєs ʟσᴧᴅєᴅ sυᴄᴄєssϝυʟʟʏ.")
     except Exception as e:
         LOGGER("POISONMUSIC").warning(f"Cookie error: {e}")
 
@@ -48,7 +48,7 @@ async def init():
     for all_module in ALL_MODULES:
         importlib.import_module("POISONMUSIC.plugins" + all_module)
 
-    LOGGER("POISONMUSIC.plugins").info("ᴍᴏᴅᴜʟᴇs ʟᴏᴀᴅᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ.")
+    LOGGER("POISONMUSIC.plugins").info("ϻσᴅυʟєs ʟσᴧᴅєᴅ sυᴄᴄєssϝυʟʟʏ.")
 
     await userbot.start()
     await POISON.start()
@@ -57,7 +57,7 @@ async def init():
         await POISON.stream_call("https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4")
     except NoActiveGroupCall:
         LOGGER("POISONMUSIC").error(
-            "ᴠᴏɪᴄᴇ ᴄʜᴀᴛ ɴᴏᴛ ᴇɴᴀʙʟᴇᴅ ɪɴ ᴛʜᴇ ʟᴏɢ ɢʀᴏᴜᴘ. sᴛᴏᴘᴘɪɴɢ ʙᴏᴛ..."
+            "ᴠσɪᴄє ᴄʜᴧᴛ ησᴛ єηᴧʙʟєᴅ ɪη ᴛʜє ʟσɢ ɢʀσυᴘ. sᴛσᴘᴘɪηɢ ʙσᴛ..."
         )
         exit()
     except:
@@ -69,12 +69,12 @@ async def init():
         asyncio.create_task(start_webserver())
         asyncio.create_task(ping_server(config.PING_URL, config.PING_TIME))
 
-    LOGGER("POISONMUSIC").info("ᴍᴜsɪᴄ ʙᴏᴛ sᴛᴀʀᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ. ᴅᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ ᴍᴀʜᴛᴏ ʜᴀᴄᴋᴇʀ 😎")
+    LOGGER("POISONMUSIC").info("ϻυsɪᴄ ʙσᴛ sᴛᴧʀᴛєᴅ sυᴄᴄєssϝυʟʟʏ. ᴅєᴠєʟσᴘєᴅ ʙʏ ϻᴧʜᴛσ ʜᴧᴄᴋєʀ 😎")
     await idle()
 
     await app.stop()
     await userbot.stop()
-    LOGGER("POISONMUSIC").info("sᴛᴏᴘᴘɪɴɢ ᴍᴜsɪᴄ ʙᴏᴛ...")
+    LOGGER("POISONMUSIC").info("sᴛσᴘᴘɪηɢ ϻυsɪᴄ ʙσᴛ...")
 
 
 if __name__ == "__main__":
