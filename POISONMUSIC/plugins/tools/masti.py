@@ -5,7 +5,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from POISONMUSIC import app
 from config import SUPPORT_CHAT
 
-BUTTON = InlineKeyboardMarkup([[InlineKeyboardButton("ꜱᴜᴘᴘᴏʀᴛ", url=SUPPORT_CHAT)]])
+BUTTON = InlineKeyboardMarkup([[InlineKeyboardButton("ꜱυᴘᴘσʀᴛ", url=SUPPORT_CHAT)]])
 
 MEDIA = {
     "cutie": "https://graph.org/file/24375c6e54609c0e4621c.mp4",
@@ -19,14 +19,14 @@ MEDIA = {
 }
 
 TEMPLATES = {
-    "cutie": "🍑 {mention} ɪꜱ {percent}% ᴄᴜᴛᴇ ʙᴀʙʏ🥀",
-    "horny": "🔥 {mention} ɪꜱ {percent}% ʜᴏʀɴʏ!",
-    "hot": "🔥 {mention} ɪꜱ {percent}% ʜᴏᴛ!",
-    "sexy": "💋 {mention} ɪꜱ {percent}% ꜱᴇxʏ!",
-    "gay": "🍷 {mention} ɪꜱ {percent}% ɢᴀʏ!",
-    "lesbian": "💜 {mention} ɪꜱ {percent}% ʟᴇꜱʙɪᴀɴ!",
-    "boob": "🍒 {mention}ꜱ ʙᴏᴏʙ ꜱɪᴢᴇ ɪꜱ {percent}!",
-    "cock": "🍆 {mention} ᴄᴏᴄᴋ ꜱɪᴢᴇ ɪꜱ {percent}ᴄᴍ!",
+    "cutie": "🍑 {mention} ɪꜱ {percent}% ᴄυᴛє ʙᴧʙʏ🥀",
+    "horny": "🔥 {mention} ɪꜱ {percent}% ʜσʀηʏ!",
+    "hot": "🔥 {mention} ɪꜱ {percent}% ʜσᴛ!",
+    "sexy": "💋 {mention} ɪꜱ {percent}% ꜱєxʏ!",
+    "gay": "🍷 {mention} ɪꜱ {percent}% ɢᴧʏ!",
+    "lesbian": "💜 {mention} ɪꜱ {percent}% ʟєꜱʙɪᴧη!",
+    "boob": "🍒 {mention}ꜱ ʙσσʙ ꜱɪᴢє ɪꜱ {percent}!",
+    "cock": "🍆 {mention} ᴄσᴄᴋ ꜱɪᴢє ɪꜱ {percent}ᴄϻ!",
 }
 
 

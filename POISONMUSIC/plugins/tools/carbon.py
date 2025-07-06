@@ -21,20 +21,20 @@ async def generate_carbon(_, message: Message):
 
     if not replied or not (replied.text or replied.caption):
         return await message.reply_text(
-            "**ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴛᴇxᴛ ᴍᴇssᴀɢᴇ ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ ᴀ ᴄᴀʀʙᴏɴ.**"
+            "**ʀєᴘʟʏ ᴛσ ᴧ ᴛєxᴛ ϻєssᴧɢє ᴛσ ɢєηєʀᴧᴛє ᴧ ᴄᴧʀʙση.**"
         )
 
-    status = await message.reply("🔄 ᴄʀᴇᴀᴛɪɴɢ ʏᴏᴜʀ ᴄᴀʀʙᴏɴ...")
+    status = await message.reply("🔄 ᴄʀєᴧᴛɪηɢ ʏσυʀ ᴄᴧʀʙση...")
     carbon = None
 
     try:
         carbon = await make_carbon(replied.text or replied.caption)
         if not carbon:
-            return await status.edit("❌ ғᴀɪʟᴇᴅ ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ ᴄᴀʀʙᴏɴ.")
+            return await status.edit("❌ ғᴧɪʟєᴅ ᴛσ ɢєηєʀᴧᴛє ᴄᴧʀʙση.")
         await message.reply_photo(carbon)
         await status.delete()
     except Exception:
-        await status.edit("❌ ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜɪʟᴇ ᴄʀᴇᴀᴛɪɴɢ ᴄᴀʀʙᴏɴ.")
+        await status.edit("❌ ᴧη єʀʀσʀ σᴄᴄυʀʀєᴅ ᴡʜɪʟє ᴄʀєᴧᴛɪηɢ ᴄᴧʀʙση.")
     finally:
         if carbon:
             carbon.close()

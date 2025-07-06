@@ -65,7 +65,7 @@ async def generate_image(chat_id: int, uid1: int, uid2: int, date: str) -> str:
 @app.on_message(filters.command("couple"))
 async def couples_handler(_, message: Message):
     if message.chat.type == ChatType.PRIVATE:
-        return await message.reply("**ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴏɴʟʏ ᴡᴏʀᴋs ɪɴ ɢʀᴏᴜᴘs.**")
+        return await message.reply("**ᴛʜɪs ᴄσϻϻᴧηᴅ σηʟʏ ᴡσʀᴋs ɪη ɢʀσυᴘs.**")
 
     wait = await message.reply("🦋")
     cid  = message.chat.id
@@ -87,7 +87,7 @@ async def couples_handler(_, message: Message):
             if not m.user.is_bot
         ]
         if len(members) < 2:
-            return await wait.edit("**ɴᴏᴛ ᴇɴᴏᴜɢʜ ᴜsᴇʀs ɪɴ ᴛʜᴇ ɢʀᴏᴜᴘ.**")
+            return await wait.edit("**ησᴛ єησυɢʜ υsєʀs ɪη ᴛʜє ɢʀσυᴘ.**")
 
         tries = 0
         while tries < 5:
@@ -98,18 +98,18 @@ async def couples_handler(_, message: Message):
                 break
             tries += 1
         else:
-            return await wait.edit("**ᴄᴏᴜʟᴅ ɴᴏᴛ ꜰɪɴᴅ ᴠᴀʟɪᴅ ᴍᴇᴍʙᴇʀꜱ.**")
+            return await wait.edit("**ᴄσυʟᴅ ησᴛ ꜰɪηᴅ ᴠᴧʟɪᴅ ϻєϻʙєʀꜱ.**")
 
         img_path = await generate_image(cid, uid1, uid2, date)
         await save_couple(cid, date, {"user1": uid1, "user2": uid2}, img_path)
 
     caption = (
-        "💌 **ᴄᴏᴜᴘʟᴇ ᴏꜰ ᴛʜᴇ ᴅᴀʏ!** 💗\n\n"
+        "💌 **ᴄσυᴘʟє σꜰ ᴛʜє ᴅᴧʏ!** 💗\n\n"
         "╔═══✿═══❀═══✿═══╗\n"
-        f"💌 **ᴛᴏᴅᴀʏ'ꜱ ᴄᴏᴜᴘʟᴇ:**\n⤷ {user1.mention} 💞 {user2.mention}\n"
+        f"💌 **ᴛσᴅᴧʏ'ꜱ ᴄσυᴘʟє:**\n⤷ {user1.mention} 💞 {user2.mention}\n"
         "╚═══✿═══❀═══✿═══╝\n\n"
-        f"📅 **ɴᴇxᴛ ꜱᴇʟᴇᴄᴛɪᴏɴ:** `{tomorrow()}`\n\n"
-        "💗 **ᴛᴀɢ ʏᴏᴜʀ ᴄʀᴜꜱʜ — ʏᴏᴜ ᴍɪɢʜᴛ ʙᴇ ɴᴇxᴛ!** 😉"
+        f"📅 **ηєxᴛ ꜱєʟєᴄᴛɪση:** `{tomorrow()}`\n\n"
+        "💗 **ᴛᴧɢ ʏσυʀ ᴄʀυꜱʜ — ʏσυ ϻɪɢʜᴛ ʙє ηєxᴛ!** 😉"
     )
 
     await message.reply_photo(img_path, caption=caption)

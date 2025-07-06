@@ -13,7 +13,7 @@ from POISONMUSIC.utils.database import (
 
 @app.on_message(filters.command(["activevc", "activevoice", "vc"]) & SUDOERS)
 async def activevc(_, message: Message):
-    mystic = await message.reply_text("» ɢᴇᴛᴛɪɴɢ ᴀᴄᴛɪᴠᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ʟɪsᴛ...")
+    mystic = await message.reply_text("» ɢєᴛᴛɪηɢ ᴧᴄᴛɪᴠє ᴠσɪᴄє ᴄʜᴧᴛs ʟɪsᴛ...")
     served_chats = await get_active_chats()
     text = ""
     j = 0
@@ -27,16 +27,16 @@ async def activevc(_, message: Message):
         except:
             await remove_active_chat(x)
     if not text:
-        await mystic.edit_text(f"» ɴᴏ ᴀᴄᴛɪᴠᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴏɴ {app.mention}.")
+        await mystic.edit_text(f"» ησ ᴧᴄᴛɪᴠє ᴠσɪᴄє ᴄʜᴧᴛs ση {app.mention}.")
     else:
         await mystic.edit_text(
-            f"<b>» ʟɪsᴛ ᴏғ ᴄᴜʀʀᴇɴᴛʟʏ ᴀᴄᴛɪᴠᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs :</b>\n\n{text}",
+            f"<b>» ʟɪsᴛ σғ ᴄυʀʀєηᴛʟʏ ᴧᴄᴛɪᴠє ᴠσɪᴄє ᴄʜᴧᴛs :</b>\n\n{text}",
             disable_web_page_preview=True,
         )
 
 @app.on_message(filters.command(["activev", "activevideo", "vvc"]) & SUDOERS)
 async def activevi_(_, message: Message):
-    mystic = await message.reply_text("» ɢᴇᴛᴛɪɴɢ ᴀᴄᴛɪᴠᴇ ᴠɪᴅᴇᴏ ᴄʜᴀᴛs ʟɪsᴛ...")
+    mystic = await message.reply_text("» ɢєᴛᴛɪηɢ ᴧᴄᴛɪᴠє ᴠɪᴅєσ ᴄʜᴧᴛs ʟɪsᴛ...")
     served_chats = await get_active_video_chats()
     text = ""
     j = 0
@@ -50,10 +50,10 @@ async def activevi_(_, message: Message):
         except:
             await remove_active_video_chat(x)
     if not text:
-        await mystic.edit_text(f"» ɴᴏ ᴀᴄᴛɪᴠᴇ ᴠɪᴅᴇᴏ ᴄʜᴀᴛs ᴏɴ {app.mention}.")
+        await mystic.edit_text(f"» ησ ᴧᴄᴛɪᴠє ᴠɪᴅєσ ᴄʜᴧᴛs ση {app.mention}.")
     else:
         await mystic.edit_text(
-            f"<b>» ʟɪsᴛ ᴏғ ᴄᴜʀʀᴇɴᴛʟʏ ᴀᴄᴛɪᴠᴇ ᴠɪᴅᴇᴏ ᴄʜᴀᴛs :</b>\n\n{text}",
+            f"<b>» ʟɪsᴛ σғ ᴄυʀʀєηᴛʟʏ ᴧᴄᴛɪᴠє ᴠɪᴅєσ ᴄʜᴧᴛs :</b>\n\n{text}",
             disable_web_page_preview=True,
         )
 
@@ -62,8 +62,8 @@ async def active_count(client: Client, message: Message):
     ac_audio = str(len(await get_active_chats()))
     ac_video = str(len(await get_active_video_chats()))
     await message.reply_text(
-        f"✫ <b><u>ᴀᴄᴛɪᴠᴇ ᴄʜᴀᴛs ɪɴғᴏ</u></b> :\n\nᴠᴏɪᴄᴇ : {ac_audio}\nᴠɪᴅᴇᴏ  : {ac_video}",
+        f"✫ <b><u>ᴧᴄᴛɪᴠє ᴄʜᴧᴛs ɪηғσ</u></b> :\n\nᴠσɪᴄє : {ac_audio}\nᴠɪᴅєσ  : {ac_video}",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("✯ ᴄʟᴏsᴇ ✯", callback_data="close")]]
+            [[InlineKeyboardButton("✯ ᴄʟσsє ✯", callback_data="close")]]
         )
     )

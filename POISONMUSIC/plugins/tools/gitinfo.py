@@ -8,7 +8,7 @@ from POISONMUSIC import app
 @app.on_message(filters.command(["github", "git"]))
 async def github(_, message: Message):
     if len(message.command) != 2:
-        return await message.reply_text("**ᴜsᴀɢᴇ:** `/git <username>`")
+        return await message.reply_text("**υsᴧɢє:** `/git <username>`")
 
     username = message.text.split(None, 1)[1]
     url = f"https://api.github.com/users/{username}"
@@ -16,9 +16,9 @@ async def github(_, message: Message):
     async with aiohttp.ClientSession() as session:
         async with session.get(url) as response:
             if response.status == 404:
-                return await message.reply_text("🚫 **ᴜsᴇʀ ɴᴏᴛ ғᴏᴜɴᴅ!**")
+                return await message.reply_text("🚫 **υsєʀ ησᴛ ғσυηᴅ!**")
             elif response.status != 200:
-                return await message.reply_text("⚠️ **ᴇʀʀᴏʀ ғᴇᴛᴄʜɪɴɢ ᴅᴀᴛᴀ!**")
+                return await message.reply_text("⚠️ **єʀʀσʀ ғєᴛᴄʜɪηɢ ᴅᴧᴛᴧ!**")
 
             data = await response.json()
 
@@ -35,22 +35,22 @@ async def github(_, message: Message):
     avatar = data.get("avatar_url", None)
 
     caption = f"""
-✨ **ɢɪᴛʜᴜʙ ᴘʀᴏғɪʟᴇ ɪɴꜰᴏ**
+✨ **ɢɪᴛʜυʙ ᴘʀσғɪʟє ɪηꜰσ**
 
-👤 **ɴᴀᴍᴇ:** `{name}`
-🔧 **ᴜsᴇʀɴᴀᴍᴇ:** `{username}`
-📌 **ʙɪᴏ:** {bio}
-🏢 **ᴄᴏᴍᴘᴀɴʏ:** {company}
-📍 **ʟᴏᴄᴀᴛɪᴏɴ:** {location}
-🌐 **ʙʟᴏɢ:** {blog}
-🗓 **ᴄʀᴇᴀᴛᴇᴅ ᴏɴ:** `{created}`
-📁 **ᴘᴜʙʟɪᴄ ʀᴇᴘᴏs:** `{repos}`
-👥 **ғᴏʟʟᴏᴡᴇʀs:** `{followers}` | **ғᴏʟʟᴏᴡɪɴɢ:** `{following}`
-🔗 **ᴘʀᴏғɪʟᴇ:** [ᴠɪᴇᴡ ᴏɴ ɢɪᴛʜᴜʙ]({url})
+👤 **ηᴧϻє:** `{name}`
+🔧 **υsєʀηᴧϻє:** `{username}`
+📌 **ʙɪσ:** {bio}
+🏢 **ᴄσϻᴘᴧηʏ:** {company}
+📍 **ʟσᴄᴧᴛɪση:** {location}
+🌐 **ʙʟσɢ:** {blog}
+🗓 **ᴄʀєᴧᴛєᴅ ση:** `{created}`
+📁 **ᴘυʙʟɪᴄ ʀєᴘσs:** `{repos}`
+👥 **ғσʟʟσᴡєʀs:** `{followers}` | **ғσʟʟσᴡɪηɢ:** `{following}`
+🔗 **ᴘʀσғɪʟє:** [ᴠɪєᴡ ση ɢɪᴛʜυʙ]({url})
 """.strip()
 
     keyboard = InlineKeyboardMarkup(
-        [[InlineKeyboardButton("❌ ᴄʟᴏsᴇ", callback_data="close")]]
+        [[InlineKeyboardButton("❌ ᴄʟσsє", callback_data="close")]]
     )
 
     if avatar:

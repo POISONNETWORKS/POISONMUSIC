@@ -41,7 +41,7 @@ async def edit_or_reply(msg: Message, **kwargs):
 )
 async def executor(client: Client, message: Message):
     if len(message.command) < 2:
-        return await edit_or_reply(message, text="<b>ᴡʜᴀᴛ ʏᴏᴜ ᴡᴀɴɴᴀ ᴇxᴇᴄᴜᴛᴇ ʙᴀʙʏ ?</b>")
+        return await edit_or_reply(message, text="<b>ᴡʜᴧᴛ ʏσυ ᴡᴧηηᴧ єxєᴄυᴛє ʙᴧʙʏ ?</b>")
 
     try:
         cmd = message.text.split(" ", maxsplit=1)[1]
@@ -75,7 +75,7 @@ async def executor(client: Client, message: Message):
     else:
         evaluation += "Success"
 
-    final_output = f"<b>⥤ ʀᴇsᴜʟᴛ :</b>\n<pre language='python'>{evaluation}</pre>"
+    final_output = f"<b>⥤ ʀєsυʟᴛ :</b>\n<pre language='python'>{evaluation}</pre>"
 
     t2 = time()
     keyboard = InlineKeyboardMarkup(
@@ -100,7 +100,7 @@ async def executor(client: Client, message: Message):
 
         await message.reply_document(
             document=filename,
-            caption=f"<b>⥤ ᴇᴠᴀʟ :</b>\n<code>{cmd[0:980]}</code>\n\n<b>⥤ ʀᴇsᴜʟᴛ :</b>\nAttached Document",
+            caption=f"<b>⥤ єᴠᴧʟ :</b>\n<code>{cmd[0:980]}</code>\n\n<b>⥤ ʀєsυʟᴛ :</b>\nAttached Document",
             quote=False,
             reply_markup=keyboard,
         )
@@ -124,7 +124,7 @@ async def forceclose_command(_, CallbackQuery):
     if CallbackQuery.from_user.id != int(user_id):
         try:
             return await CallbackQuery.answer(
-                "» ɪᴛ'ʟʟ ʙᴇ ʙᴇᴛᴛᴇʀ ɪғ ʏᴏᴜ sᴛᴀʏ ɪɴ ʏᴏᴜʀ ʟɪᴍɪᴛs ʙᴀʙʏ.", show_alert=True
+                "» ɪᴛ'ʟʟ ʙє ʙєᴛᴛєʀ ɪғ ʏσυ sᴛᴧʏ ɪη ʏσυʀ ʟɪϻɪᴛs ʙᴧʙʏ.", show_alert=True
             )
         except:
             return
@@ -149,7 +149,7 @@ async def forceclose_command(_, CallbackQuery):
 )
 async def shellrunner(_, message: Message):
     if len(message.command) < 2:
-        return await edit_or_reply(message, text="<b>ᴇxᴀᴍᴩʟᴇ :</b>\n/sh git pull")
+        return await edit_or_reply(message, text="<b>єxᴧϻᴩʟє :</b>\n/sh git pull")
 
     text = message.text.split(None, 1)[1]
 

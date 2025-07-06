@@ -11,7 +11,7 @@ async def translate(_, message: Message):
     reply = message.reply_to_message
 
     if not reply or not (reply.text or reply.caption):
-        return await message.reply_text("📌 ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴛᴇxᴛ ᴏʀ ᴄᴀᴘᴛɪᴏɴ ᴛᴏ ᴛʀᴀɴsʟᴀᴛᴇ.")
+        return await message.reply_text("📌 ʀєᴘʟʏ ᴛσ ᴧ ᴛєxᴛ σʀ ᴄᴧᴘᴛɪση ᴛσ ᴛʀᴧηsʟᴧᴛє.")
 
     content = reply.text or reply.caption
 
@@ -29,8 +29,8 @@ async def translate(_, message: Message):
     try:
         result = await translator(content, sourcelang=source_lang, targetlang=target_lang)
         await message.reply_text(
-            f"🌐 **ᴛʀᴀɴsʟᴀᴛᴇᴅ:** `{source_lang}` ➜ `{target_lang}`\n\n"
+            f"🌐 **ᴛʀᴧηsʟᴧᴛєᴅ:** `{source_lang}` ➜ `{target_lang}`\n\n"
             f"`{result.text}`"
         )
     except Exception as e:
-        await message.reply_text(f"❌ **ᴛʀᴀɴsʟᴀᴛɪᴏɴ ꜰᴀɪʟᴇᴅ:** `{str(e)}`")
+        await message.reply_text(f"❌ **ᴛʀᴧηsʟᴧᴛɪση ꜰᴧɪʟєᴅ:** `{str(e)}`")

@@ -29,7 +29,7 @@ def extract_content(response) -> str | None:
 
 
 def format_response(model_name: str, content: str) -> str:
-    return f"**ᴍᴏᴅᴇʟ:** `{model_name}`\n\n**ʀᴇsᴘᴏɴsᴇ:**\n{content}"
+    return f"**ϻσᴅєʟ:** `{model_name}`\n\n**ʀєsᴘσηsє:**\n{content}"
 
 
 async def handle_text_model(message: Message, model, model_name: str, as_messages=False):

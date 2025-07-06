@@ -85,7 +85,7 @@ async def close_menu(_, query: CallbackQuery):
     try:
         await query.answer()
         await query.message.delete()
-        msg = await query.message.reply_text(f"✅ ᴄʟᴏꜱᴇᴅ ʙʏ : {query.from_user.mention}")
+        msg = await query.message.reply_text(f"✅ ᴄʟσꜱєᴅ ʙʏ : {query.from_user.mention}")
         await asyncio.sleep(2)
         await msg.delete()
     except:

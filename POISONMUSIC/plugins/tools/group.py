@@ -7,12 +7,12 @@ from config import OWNER_ID
 
 @app.on_message(filters.video_chat_started)
 async def on_voice_chat_started(_, message: Message):
-    await message.reply_text("🎙 **ᴠᴏɪᴄᴇ ᴄʜᴀᴛ ʜᴀs sᴛᴀʀᴛᴇᴅ!**")
+    await message.reply_text("🎙 **ᴠσɪᴄє ᴄʜᴧᴛ ʜᴧs sᴛᴧʀᴛєᴅ!**")
 
 
 @app.on_message(filters.video_chat_ended)
 async def on_voice_chat_ended(_, message: Message):
-    await message.reply_text("🔕 **ᴠᴏɪᴄᴇ ᴄʜᴀᴛ ᴇɴᴅᴇᴅ.**")
+    await message.reply_text("🔕 **ᴠσɪᴄє ᴄʜᴧᴛ єηᴅєᴅ.**")
 
 
 @app.on_message(filters.video_chat_members_invited)
@@ -28,10 +28,10 @@ async def on_voice_chat_members_invited(_, message: Message):
 
     if invited_list:
         users = ", ".join(invited_list)
-        await message.reply_text(f"👥 {inviter} ɪɴᴠɪᴛᴇᴅ {users} ᴛᴏ ᴛʜᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ. 😉")
+        await message.reply_text(f"👥 {inviter} ɪηᴠɪᴛєᴅ {users} ᴛσ ᴛʜє ᴠσɪᴄє ᴄʜᴧᴛ. 😉")
 
 
 @app.on_message(filters.command("leavegroup") & filters.user(OWNER_ID))
 async def leave_group(_, message: Message):
-    await message.reply_text("👋 **ʟᴇᴀᴠɪɴɢ ᴛʜɪs ɢʀᴏᴜᴘ...**")
+    await message.reply_text("👋 **ʟєᴧᴠɪηɢ ᴛʜɪs ɢʀσυᴘ...**")
     await app.leave_chat(chat_id=message.chat.id, delete=True)

@@ -87,8 +87,8 @@ async def join_watcher(_, message: Message):
                 "❅─────✧❅✦❅✧─────❅\n\n"
                 f"📌 **ᴄʜᴧᴛ ηᴧϻє:** `{chat.title}`\n"
                 f"🍂 **ᴄʜᴧᴛ ɪᴅ:** `{chat.id}`\n"
-                f"🔐 **ᴄʜᴧᴛ ᴜsєʀηᴧϻє:** @{chat.username if chat.username else 'Private'}\n"
-                f"🛰 **ᴄʜᴧᴛ ʟɪηᴋ:** [ᴄʟɪᴄᴋ ʜᴇʀᴇ]({invite_link or 'https://t.me/'})\n"
+                f"🔐 **ᴄʜᴧᴛ υsєʀηᴧϻє:** @{chat.username if chat.username else 'Private'}\n"
+                f"🛰 **ᴄʜᴧᴛ ʟɪηᴋ:** [ᴄʟɪᴄᴋ ʜєʀє]({invite_link or 'https://t.me/'})\n"
                 f"📈 **ɢʀσυᴘ ϻєϻʙєʀs:** `{member_count}`\n"
                 f"🤔 **ᴧᴅᴅєᴅ ʙʏ:** {message.from_user.mention if message.from_user else 'Unknown'}"
             )
@@ -96,7 +96,7 @@ async def join_watcher(_, message: Message):
             reply_markup = None
             if _is_valid_url(invite_link):
                 reply_markup = InlineKeyboardMarkup(
-                    [[InlineKeyboardButton("sᴇᴇ ɢʀᴏᴜᴘ 👀", url=invite_link.strip())]]
+                    [[InlineKeyboardButton("sєє ɢʀσυᴘ 👀", url=invite_link.strip())]]
                 )
 
             await safe_send_photo(
@@ -118,7 +118,7 @@ async def on_left_chat_member(_, message: Message):
         if message.left_chat_member.id != BOT_ID:
             return
 
-        remover = message.from_user.mention if message.from_user else "**ᴜɴᴋɴᴏᴡɴ ᴜsᴇʀ**"
+        remover = message.from_user.mention if message.from_user else "**υηᴋησᴡη υsєʀ**"
         chat = message.chat
 
         text = (

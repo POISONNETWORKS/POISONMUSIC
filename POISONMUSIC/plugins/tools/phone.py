@@ -14,8 +14,8 @@ async def check_phone(_, message: Message):
 
     if len(message.command) < 2:
         return await message.reply_text(
-            "📱 **ᴘʟᴇᴀꜱᴇ ᴘʀᴏᴠɪᴅᴇ ᴀ ᴘʜᴏɴᴇ ɴᴜᴍʙᴇʀ.**\n"
-            "**ᴜꜱᴀɢᴇ:** `/phone <number>`",
+            "📱 **ᴘʟєᴧꜱє ᴘʀσᴠɪᴅє ᴧ ᴘʜσηє ηυϻʙєʀ.**\n"
+            "**υꜱᴧɢє:** `/phone <number>`",
             parse_mode=ParseMode.MARKDOWN
         )
 
@@ -33,7 +33,7 @@ async def check_phone(_, message: Message):
             async with session.get(API_URL, params=params) as response:
                 if response.status != 200:
                     return await message.reply_text(
-                        "❌ **ɴᴇᴛᴡᴏʀᴋ ᴇʀʀᴏʀ. ᴀᴘɪ ɴᴏᴛ ʀᴇᴀᴄʜᴀʙʟᴇ.**",
+                        "❌ **ηєᴛᴡσʀᴋ єʀʀσʀ. ᴧᴘɪ ησᴛ ʀєᴧᴄʜᴧʙʟє.**",
                         parse_mode=ParseMode.MARKDOWN
                     )
 
@@ -41,28 +41,28 @@ async def check_phone(_, message: Message):
 
                 if not data.get("valid"):
                     return await message.reply_text(
-                        "❌ **ɪɴᴠᴀʟɪᴅ ᴘʜᴏɴᴇ ɴᴜᴍʙᴇʀ.**",
+                        "❌ **ɪηᴠᴧʟɪᴅ ᴘʜσηє ηυϻʙєʀ.**",
                         parse_mode=ParseMode.MARKDOWN
                     )
 
                 result = (
-                    "📞 **ᴠᴀʟɪᴅ ᴘʜᴏɴᴇ ᴅᴇᴛᴀɪʟꜱ:**\n"
-                    f"➤ **ɴᴜᴍʙᴇʀ:** `{number}`\n"
-                    f"➤ **ᴄᴏᴜɴᴛʀʏ:** `{data.get('country_name', 'N/A')} ({data.get('country_code', 'N/A')})`\n"
-                    f"➤ **ʟᴏᴄᴀᴛɪᴏɴ:** `{data.get('location', 'N/A')}`\n"
-                    f"➤ **ᴄᴀʀʀɪᴇʀ:** `{data.get('carrier', 'N/A')}`\n"
-                    f"➤ **ᴅᴇᴠɪᴄᴇ ᴛʏᴘᴇ:** `{data.get('line_type', 'N/A')}`"
+                    "📞 **ᴠᴧʟɪᴅ ᴘʜσηє ᴅєᴛᴧɪʟꜱ:**\n"
+                    f"➤ **ηυϻʙєʀ:** `{number}`\n"
+                    f"➤ **ᴄσυηᴛʀʏ:** `{data.get('country_name', 'N/A')} ({data.get('country_code', 'N/A')})`\n"
+                    f"➤ **ʟσᴄᴧᴛɪση:** `{data.get('location', 'N/A')}`\n"
+                    f"➤ **ᴄᴧʀʀɪєʀ:** `{data.get('carrier', 'N/A')}`\n"
+                    f"➤ **ᴅєᴠɪᴄє ᴛʏᴘє:** `{data.get('line_type', 'N/A')}`"
                 )
 
                 return await message.reply_text(result, parse_mode=ParseMode.MARKDOWN)
 
     except aiohttp.ClientError as e:
         return await message.reply_text(
-            f"⚠️ **ɴᴇᴛᴡᴏʀᴋ ᴇʀʀᴏʀ:** `{str(e)}`",
+            f"⚠️ **ηєᴛᴡσʀᴋ єʀʀσʀ:** `{str(e)}`",
             parse_mode=ParseMode.MARKDOWN
         )
     except Exception as e:
         return await message.reply_text(
-            f"⚠️ **ᴜɴᴋɴᴏᴡɴ ᴇʀʀᴏʀ:** `{str(e)}`",
+            f"⚠️ **υηᴋησᴡη єʀʀσʀ:** `{str(e)}`",
             parse_mode=ParseMode.MARKDOWN
         )
